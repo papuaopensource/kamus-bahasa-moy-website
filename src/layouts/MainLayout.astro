@@ -1,0 +1,32 @@
+---
+import "../styles/global.css";
+import "@fontsource-variable/inter";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const pathname = Astro.url.pathname;
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props as Props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <Header pathname={pathname} />
+    <main
+      class="flex min-h-screen flex-col bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900"
+    >
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

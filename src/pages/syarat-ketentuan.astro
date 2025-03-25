@@ -1,0 +1,215 @@
+---
+import Link from "@/components/Link.astro";
+import { FileText, Home } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Kebijakan Privasi"
+  description="Kebijakan privasi aplikasi Kamus Bahasa Moy."
+>
+  <div class="container mx-auto px-4 py-6 md:px-8">
+    <div class="flex items-center gap-2 mb-6">
+      <Home className="h-4 w-4 text-muted-foreground" />
+      <Link
+        href="/"
+        class="text-muted-foreground hover:text-foreground text-sm"
+      >
+        Beranda
+      </Link>
+      <span class="text-muted-foreground mx-1">/</span>
+      <span class="text-sm font-medium">Syarat dan Ketentuan</span>
+    </div>
+
+    <div class="grid gap-8 max-w-3xl mx-auto">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold tracking-tight mb-2">
+          Syarat dan Ketentuan
+        </h1>
+        <p class="text-muted-foreground">Terakhir diperbarui: 1 Maret 2025</p>
+      </div>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <FileText className="h-5 w-5 text-primary" />
+            Syarat dan Ketentuan Penggunaan
+          </CardTitle>
+          <CardDescription
+            >Ketentuan yang mengatur penggunaan aplikasi Kamus Bahasa Moy</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h3 class="text-lg font-medium mb-2">1. Pendahuluan</h3>
+            <p class="text-sm text-muted-foreground">
+              Selamat datang di Kamus Bahasa Moy. Syarat dan Ketentuan ini
+              mengatur penggunaan Anda atas aplikasi Kamus Bahasa Moy yang
+              dikelola oleh Papua Open Source ("kami", "kita", atau "milik
+              kami").
+            </p>
+            <p class="text-sm text-muted-foreground mt-2">
+              Dengan mengakses atau menggunakan Aplikasi, Anda menyetujui bahwa
+              Anda telah membaca, memahami, dan menyetujui untuk terikat oleh
+              Syarat dan Ketentuan ini. Jika Anda tidak menyetujui semua
+              ketentuan ini, maka Anda tidak boleh mengakses atau menggunakan
+              Aplikasi.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">2. Penggunaan Aplikasi</h3>
+            <p class="text-sm text-muted-foreground mb-2">
+              Kamus Bahasa Moy adalah aplikasi yang dirancang untuk membantu
+              pengguna mempelajari dan memahami bahasa Moy dari Jayapura, Papua.
+              Aplikasi ini menyediakan kosakata, terjemahan, pengucapan, dan
+              contoh penggunaan dalam kalimat, serta lirik lagu dalam bahasa
+              Moy.
+            </p>
+            <p class="text-sm text-muted-foreground">
+              Anda setuju untuk menggunakan Aplikasi hanya untuk tujuan yang sah
+              dan sesuai dengan Syarat dan Ketentuan ini, serta semua hukum dan
+              peraturan yang berlaku.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">
+              3. Hak Kekayaan Intelektual
+            </h3>
+            <p class="text-sm text-muted-foreground mb-2">
+              Aplikasi dan kontennya, termasuk namun tidak terbatas pada teks,
+              grafik, logo, ikon, gambar, klip audio, unduhan digital, dan
+              kompilasi data, adalah milik Papua Open Source atau pemberi
+              lisensinya dan dilindungi oleh hukum hak cipta Indonesia dan
+              internasional.
+            </p>
+            <p class="text-sm text-muted-foreground">
+              Kode sumber Aplikasi dilisensikan di bawah lisensi AGPL-3.0. Anda
+              dapat menggunakan, memodifikasi, dan mendistribusikan kode sumber
+              sesuai dengan ketentuan lisensi tersebut, termasuk menjaga kode
+              sumber tetap terbuka dan mencantumkan atribusi kepada Papua Open
+              Source sebagai pengembang awal.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">4. Batasan Penggunaan</h3>
+            <p class="text-sm text-muted-foreground mb-2">
+              Anda setuju untuk tidak:
+            </p>
+            <ul class="list-disc pl-6 space-y-1 text-sm text-muted-foreground">
+              <li>
+                Menggunakan Aplikasi dengan cara yang melanggar hukum atau
+                peraturan yang berlaku
+              </li>
+              <li>
+                Menggunakan Aplikasi untuk tujuan komersial tanpa izin tertulis
+                dari kami
+              </li>
+              <li>
+                Mencoba untuk mendekompilasi atau merekayasa balik Aplikasi,
+                kecuali sebagaimana diizinkan oleh hukum
+              </li>
+              <li>
+                Menghapus atau mengubah pemberitahuan hak cipta, merek dagang,
+                atau hak kepemilikan lainnya dari Aplikasi
+              </li>
+              <li>
+                Menggunakan Aplikasi dengan cara yang dapat merusak,
+                menonaktifkan, membebani, atau mengganggu server atau jaringan
+                kami
+              </li>
+              <li>
+                Mengakses Aplikasi dengan cara yang tidak sah, termasuk namun
+                tidak terbatas pada penggunaan robot, spider, atau cara otomatis
+                lainnya
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">5. Penafian Jaminan</h3>
+            <p class="text-sm text-muted-foreground">
+              Aplikasi disediakan "sebagaimana adanya" dan "sebagaimana
+              tersedia" tanpa jaminan apa pun, baik tersurat maupun tersirat.
+              Papua Open Source tidak menjamin bahwa Aplikasi akan selalu aman,
+              bebas dari kesalahan, atau bahwa kesalahan apa pun akan
+              diperbaiki. Anda menggunakan Aplikasi atas risiko Anda sendiri.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">6. Batasan Tanggung Jawab</h3>
+            <p class="text-sm text-muted-foreground">
+              Dalam keadaan apa pun, Papua Open Source tidak bertanggung jawab
+              atas kerugian langsung, tidak langsung, insidental, khusus, atau
+              konsekuensial yang timbul dari penggunaan atau ketidakmampuan
+              untuk menggunakan Aplikasi.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">
+              7. Perubahan Syarat dan Ketentuan
+            </h3>
+            <p class="text-sm text-muted-foreground">
+              Kami berhak, atas kebijakan kami sendiri, untuk memodifikasi atau
+              mengganti Syarat dan Ketentuan ini kapan saja. Jika revisi
+              bersifat material, kami akan memberikan pemberitahuan setidaknya
+              30 hari sebelum ketentuan baru berlaku. Apa yang merupakan
+              perubahan material akan ditentukan atas kebijakan kami sendiri.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">8. Hukum yang Berlaku</h3>
+            <p class="text-sm text-muted-foreground">
+              Syarat dan Ketentuan ini akan diatur dan ditafsirkan sesuai dengan
+              hukum Indonesia, tanpa memperhatikan ketentuan konflik hukumnya.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">9. Hubungi Kami</h3>
+            <p class="text-sm text-muted-foreground">
+              Jika Anda memiliki pertanyaan tentang Syarat dan Ketentuan ini,
+              silakan hubungi kami:
+            </p>
+            <ul
+              class="list-disc pl-6 space-y-1 text-sm text-muted-foreground mt-2"
+            >
+              <li>
+                Melalui email:{" "}
+                <a
+                  href="mailto:contact@papuaopensource.org"
+                  class="text-primary hover:underline"
+                >
+                  contact@papuaopensource.org
+                </a>
+              </li>
+              <li>
+                Melalui website:{" "}
+                <a
+                  href="https://www.papuaopensource.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary hover:underline"
+                >
+                  www.papuaopensource.org
+                </a>
+              </li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</MainLayout>

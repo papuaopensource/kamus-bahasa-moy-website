@@ -1,0 +1,192 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import Link from "@/components/Link.astro";
+import {
+  BookOpen,
+  Code,
+  ExternalLink,
+  Github,
+  Globe,
+  Heart,
+  Home,
+  Mail,
+} from "lucide-react";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+---
+
+<MainLayout
+  title="Tentang | Kamus Bahasa Moy"
+  description="Informasi tentang situs Kamus Bahasa Moy dan Panduan kontribusi"
+>
+  <div class="container mx-auto px-4 py-6 md:px-8">
+    <div class="flex items-center gap-2 mb-6">
+      <Home className="h-4 w-4 text-muted-foreground" />
+      <Link
+        href="/"
+        class="text-muted-foreground hover:text-foreground text-sm"
+      >
+        Beranda
+      </Link>
+      <span class="text-muted-foreground mx-1">/</span>
+      <span class="text-sm font-medium">Tentang</span>
+    </div>
+
+    <div class="grid gap-8 max-w-3xl mx-auto">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold tracking-tight mb-2">
+          Tentang Kamus Bahasa Moy
+        </h1>
+        <p class="text-muted-foreground">
+          Proyek open source untuk melestarikan dan mempromosikan bahasa Moy
+          dari Jayapura, Papua
+        </p>
+      </div>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-primary" />
+            Tentang Aplikasi
+          </CardTitle>
+          <CardDescription
+            >Informasi tentang aplikasi Kamus Bahasa Moy</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            Kamus Bahasa Moy adalah aplikasi yang dikembangkan untuk membantu
+            melestarikan dan mempromosikan bahasa Moy dari Jayapura, Papua.
+            Aplikasi ini menyediakan kosakata bahasa Moy beserta terjemahan,
+            pengucapan, dan contoh penggunaan dalam kalimat. Dengan antarmuka
+            yang intuitif dan fitur-fitur yang berguna, aplikasi ini memudahkan
+            pengguna untuk mempelajari dan mengapresiasi bahasa Moy.
+          </p>
+          <p class="mt-2">
+            Selain kamus, aplikasi ini juga menyediakan koleksi lirik lagu dalam
+            bahasa Moy beserta terjemahan dalam bahasa Indonesia. Fitur ini
+            memungkinkan pengguna untuk menikmati dan memahami kekayaan budaya
+            Papua melalui musik dan lagu tradisional, sekaligus belajar bahasa
+            Moy dengan cara yang lebih menyenangkan dan interaktif.
+          </p>
+          <p>
+            Data kosa-kata bahasa dalam aplikasi ini diambil dari Kamus
+            Dwibahasa Mooi yang dibuat oleh Balai Bahasa Provinsi Papua,
+            sehingga menjamin keakuratan dan keaslian konten bahasa yang
+            disajikan.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <Code className="h-5 w-5 text-primary" />
+            Adaptasi untuk Bahasa Daerah Lain
+          </CardTitle>
+          <CardDescription
+            >Informasi tentang penggunaan kode sumber untuk bahasa lain</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            Kode sumber Kamus Bahasa Moy dapat Anda gunakan untuk membuat
+            aplikasi kamus untuk bahasa daerah lainnya di Indonesia atau di
+            seluruh dunia. Kami mendorong upaya pelestarian bahasa daerah
+            melalui teknologi dan dengan senang hati menyediakan codebase ini
+            sebagai dasar pengembangan aplikasi serupa.
+          </p>
+          <p class="font-medium">
+            Dalam mengadaptasi kode sumber ini, Anda wajib:
+          </p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>
+              Tetap mencantumkan atribusi kepada Papua Open Source sebagai
+              pengembang awal
+            </li>
+            <li>
+              Mematuhi ketentuan lisensi AGPL-3.0, termasuk menjaga kode sumber
+              tetap terbuka untuk umum
+            </li>
+          </ul>
+          <div class="flex flex-col sm:flex-row gap-4 mt-4">
+            <Button className="flex items-center gap-2">
+              <Link
+                href="https://github.com/papua-opensource/kamus-bahasa-moy"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-1"
+              >
+                <Github className="h-4 w-4" />
+                <span>Repository GitHub</span>
+                <ExternalLink className="h-3 w-3 ml-1" />
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <Heart className="h-5 w-5 text-primary" />
+            Tentang Papua Open Source
+          </CardTitle>
+          <CardDescription
+            >Informasi tentang komunitas pengembang</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            Papua Open Source adalah komunitas yang berdedikasi untuk
+            mengembangkan solusi teknologi open source yang bermanfaat bagi
+            masyarakat Papua dan Indonesia secara umum. Kami percaya bahwa
+            teknologi dapat menjadi alat yang efektif untuk melestarikan budaya
+            dan bahasa daerah.
+          </p>
+          <p>
+            Melalui proyek-proyek seperti Kamus Bahasa Moy, kami berupaya untuk
+            mendokumentasikan dan mempromosikan kekayaan budaya Papua dalam
+            format digital yang mudah diakses oleh generasi muda.
+          </p>
+          <Separator className="my-4" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-center gap-3">
+              <Mail className="h-5 w-5 text-muted-foreground" />
+              <div>
+                <p class="text-sm font-medium">Email</p>
+                <a
+                  href="mailto:contact@papuaopensource.org"
+                  class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  contact@papuaopensource.org
+                </a>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <Globe className="h-5 w-5 text-muted-foreground" />
+              <div>
+                <p class="text-sm font-medium">Website</p>
+                <a
+                  href="https://www.papuaopensource.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  www.papuaopensource.org
+                </a>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</MainLayout>

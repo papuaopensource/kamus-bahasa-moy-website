@@ -1,0 +1,118 @@
+---
+import { Image } from "astro:assets";
+import Logo from "@/assets/images/placeholder.svg";
+
+const { pathname } = Astro.props;
+
+const navItems = [
+  { href: "/kosa-kata/", label: "Kosa Kata" },
+  { href: "/lirik-lagu/", label: "Lirik Lagu" },
+  { href: "/tentang/", label: "Tentang" },
+];
+---
+
+<header
+  class="sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center"
+>
+  <div class="container flex h-16 px-4 items-center justify-between md:px-8">
+    <div class="flex items-center gap-2">
+      <a href="/" class="flex items-center gap-2">
+        <div class="relative h-8 w-8">
+          <Image
+            src={Logo}
+            alt="Logo Kamus Bahasa Moy"
+            class="rounded-md object-contain"
+          />
+        </div>
+        <h1 class="text-xl font-bold">Kamus Bahasa Moy</h1>
+      </a>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-6">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class={`relative font-medium px-2 py-1 hover:text-foreground transition-colors ${
+              pathname === item.href
+                ? "text-primary after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
+                : "text-muted-foreground"
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile menu dengan JavaScript vanilla -->
+    <div class="relative md:hidden">
+      <button
+        id="mobile-menu-button"
+        class="flex h-10 w-10 items-center justify-center rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground"
+        aria-label="Menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-menu"
+        >
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute right-0 mt-2 w-48 origin-top-right rounded-md border bg-background shadow-lg hidden"
+      >
+        <div class="py-1">
+          {
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class={`block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground ${
+                  pathname === item.href
+                    ? "text-primary font-medium border-l-2 border-primary pl-6"
+                    : "text-foreground pl-4"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // JavaScript untuk mengontrol mobile menu
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      // Menutup menu ketika mengklik di luar menu
+      document.addEventListener("click", (event) => {
+        const target = event.target as HTMLElement;
+        if (!menuButton.contains(target) && !mobileMenu.contains(target)) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+    }
+  });
+</script>

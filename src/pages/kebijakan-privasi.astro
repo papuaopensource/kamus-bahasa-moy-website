@@ -1,0 +1,160 @@
+---
+import Link from "@/components/Link.astro";
+import { Home, Shield } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout
+  title="Kebijakan Privasi"
+  description="Kebijakan privasi aplikasi Kamus Bahasa Moy."
+>
+  <div class="container mx-auto px-4 py-6 md:px-8">
+    <div class="flex items-center gap-2 mb-6">
+      <Home className="h-4 w-4 text-muted-foreground" />
+      <Link
+        href="/"
+        class="text-muted-foreground hover:text-foreground text-sm"
+      >
+        Beranda
+      </Link>
+      <span class="text-muted-foreground mx-1">/</span>
+      <span class="text-sm font-medium">Kebijakan Privasi</span>
+    </div>
+
+    <div class="grid gap-8 max-w-3xl mx-auto">
+      <div class="text-center">
+        <h1 class="text-3xl font-bold tracking-tight mb-2">
+          Kebijakan Privasi
+        </h1>
+        <p class="text-muted-foreground">Terakhir diperbarui: 1 Maret 2025</p>
+      </div>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="h-5 w-5 text-primary" />
+            Kebijakan Privasi Kamus Bahasa Moy
+          </CardTitle>
+          <CardDescription
+            >Informasi tentang bagaimana kami menangani data Anda</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-6">
+          <div>
+            <h3 class="text-lg font-medium mb-2">Pendahuluan</h3>
+            <p class="text-sm text-muted-foreground">
+              Papua Open Source ("kami", "kita", atau "milik kami") mengelola
+              aplikasi Kamus Bahasa Moy ("Aplikasi"). Halaman ini memberi tahu
+              Anda tentang kebijakan privasi kami dan bagaimana kami menghormati
+              privasi Anda saat menggunakan Aplikasi kami.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">Tidak Ada Pengumpulan Data</h3>
+            <p class="text-sm text-muted-foreground mb-2">
+              Kami ingin menegaskan bahwa Kamus Bahasa Moy{" "}
+              <strong>tidak mengumpulkan data pribadi pengguna apa pun</strong>.
+              Aplikasi ini dirancang untuk berfungsi tanpa perlu mengumpulkan,
+              menyimpan, atau memproses informasi pribadi Anda.
+            </p>
+            <p class="text-sm text-muted-foreground">
+              Kami berkomitmen untuk menjaga privasi Anda dan menyediakan
+              aplikasi yang dapat Anda gunakan dengan aman tanpa khawatir
+              tentang data pribadi Anda.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">Penggunaan Aplikasi</h3>
+            <p class="text-sm text-muted-foreground">
+              Aplikasi Kamus Bahasa Moy berfungsi sepenuhnya secara lokal di
+              perangkat Anda. Semua fitur, termasuk pencarian kosakata,
+              terjemahan, dan pemutaran audio, diproses di perangkat Anda tanpa
+              mengirimkan data apa pun ke server kami atau pihak ketiga.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">
+              Cookies dan Teknologi Pelacakan
+            </h3>
+            <p class="text-sm text-muted-foreground">
+              Aplikasi kami tidak menggunakan cookies atau teknologi pelacakan
+              lainnya untuk memantau aktivitas pengguna.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">Tautan ke Situs Web Lain</h3>
+            <p class="text-sm text-muted-foreground">
+              Aplikasi kami mungkin berisi tautan ke situs web lain yang tidak
+              dioperasikan oleh kami. Jika Anda mengklik tautan pihak ketiga,
+              Anda akan diarahkan ke situs pihak ketiga tersebut. Kami sangat
+              menyarankan Anda untuk meninjau Kebijakan Privasi setiap situs
+              yang Anda kunjungi.
+            </p>
+            <p class="text-sm text-muted-foreground mt-2">
+              Kami tidak memiliki kendali atas dan tidak bertanggung jawab atas
+              konten, kebijakan privasi, atau praktik situs atau layanan pihak
+              ketiga mana pun.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">
+              Perubahan Kebijakan Privasi Ini
+            </h3>
+            <p class="text-sm text-muted-foreground">
+              Kami dapat memperbarui Kebijakan Privasi kami dari waktu ke waktu.
+              Kami akan memberi tahu Anda tentang perubahan apa pun dengan
+              memposting Kebijakan Privasi baru di halaman ini. Anda disarankan
+              untuk meninjau Kebijakan Privasi ini secara berkala untuk setiap
+              perubahan. Perubahan pada Kebijakan Privasi ini berlaku efektif
+              saat diposting di halaman ini.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-lg font-medium mb-2">Hubungi Kami</h3>
+            <p class="text-sm text-muted-foreground">
+              Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini,
+              silakan hubungi kami:
+            </p>
+            <ul
+              class="list-disc pl-6 space-y-1 text-sm text-muted-foreground mt-2"
+            >
+              <li>
+                Melalui email:{" "}
+                <a
+                  href="mailto:contact@papuaopensource.org"
+                  class="text-primary hover:underline"
+                >
+                  contact@papuaopensource.org
+                </a>
+              </li>
+              <li>
+                Melalui website:{" "}
+                <a
+                  href="https://www.papuaopensource.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-primary hover:underline"
+                >
+                  www.papuaopensource.org
+                </a>
+              </li>
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  </div>
+</MainLayout>

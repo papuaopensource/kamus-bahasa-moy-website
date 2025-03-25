@@ -1,0 +1,30 @@
+---
+import Link from "./Link.astro";
+import { Button } from "@/components/ui/button";
+---
+
+<footer class="border-t py-6 md:py-0 mt-auto flex justify-center w-full">
+  <div
+    class="container flex flex-col px-4 md:px-8 md:h-16 md:flex-row md:items-center md:justify-between text-sm text-muted-foreground"
+  >
+    <p>© 2025 Papua Open Source. All rights reserved.</p>
+    <div class="mt-4 md:mt-0 flex gap-4">
+      <Button variant="link" size="sm">
+        <Link
+          href="/kebijakan-privasi/"
+          class="font-normal text-slate-500 hover:text-slate-700"
+          activeClass="text-slate-700 hover:text-slate-900"
+          >Kebijakan Privasi</Link
+        >
+      </Button>
+      <Button variant="link" size="sm">
+        <Link
+          href="/syarat-ketentuan/"
+          class="font-normal text-slate-500 hover:text-slate-700"
+          activeClass="text-slate-700 hover:text-slate-900"
+          >Syarat dan Ketentuan</Link
+        >
+      </Button>
+    </div>
+  </div>
+</footer>
