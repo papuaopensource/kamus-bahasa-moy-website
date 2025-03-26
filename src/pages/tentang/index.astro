@@ -5,12 +5,14 @@ import Link from "@/components/Link.astro";
 import {
   BookOpen,
   Code,
+  Download,
   ExternalLink,
   Github,
   Globe,
   Heart,
   Home,
   Mail,
+  Smartphone,
 } from "lucide-react";
 import {
   Card,
@@ -126,6 +128,41 @@ import { Separator } from "@/components/ui/separator";
               >
                 <Github className="h-4 w-4" />
                 <span>Repository GitHub</span>
+                <ExternalLink className="h-3 w-3 ml-1" />
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <Smartphone className="h-5 w-5 text-primary" />
+            Aplikasi Mobile
+          </CardTitle>
+          <CardDescription
+            >Download aplikasi Kamus Bahasa Moy di perangkat mobile Anda</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            Kamus Bahasa Moy juga tersedia dalam versi aplikasi mobile yang
+            dapat Anda download di Google Play Store. Nikmati semua fitur kamus,
+            termasuk pencarian offline, pengucapan, dan lirik lagu, langsung
+            dari smartphone Anda.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 mt-4">
+            <Button className="flex items-center gap-2">
+              <Link
+                href="https://play.google.com/store/apps/details?id=org.papuaopensource.kamus_bahasa_moy"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-1"
+                aria-disabled="true"
+              >
+                <Download className="h-4 w-4" />
+                <span>Download di Play Store</span>
                 <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
             </Button>
