@@ -158,9 +158,9 @@ export default function LirikLaguPage() {
       <div className="grid gap-6">
         <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Lirik Lagu Daerah Papua</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Lirik Lagu Bahasa Moy</h1>
             <p className="text-muted-foreground">
-              Jelajahi kumpulan lirik lagu daerah Papua dalam bahasa Moy dengan terjemahan
+              Jelajahi kumpulan lirik lagu daerah dalam bahasa Moy dengan terjemahan dalam bahasa Indonesia
             </p>
           </div>
 
