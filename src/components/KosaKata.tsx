@@ -278,7 +278,7 @@ export default function KosaKataPage() {
                           }}
                         >
                           <DialogTrigger asChild>
-                            <Card className="shadow-none cursor-pointer hover:bg-muted/50 transition-colors">
+                            <Card className="rounded-sm shadow-none py-2 cursor-pointer hover:bg-muted/50 transition-colors">
                               <CardContent>
                                 <div className="flex justify-between items-start">
                                   <div>
