@@ -1,7 +1,7 @@
 <h1 align="center">Kamus Bahasa Moy - Website</h1>
 
 <div align="center">
-  <img src="public/images/logo-kamus-bahasa-moy.png" alt="Logo Kamus Bahasa Moy" width="200"/>
+  <img src="src/assets/images/logo-kamus-bahasa-moy.svg" alt="Logo Kamus Bahasa Moy" width="200"/>
   <h3>Website Kamus Digital untuk Pelestarian Bahasa Moy</h3>
   <p><em>🔍 Untuk versi aplikasi mobile, kunjungi <a href="https://github.com/papua-opensource/kamus-bahasa-moy-mobile">repository mobile</a></em></p>
 </div>
