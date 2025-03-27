@@ -145,7 +145,7 @@ export default function LirikLaguPage() {
   }
 
   return (
-    <div className="max-w-screen-xl mx-auto py-6">
+    <div className="max-w-screen-xl mx-auto px-4 py-6 lg:px-8">
       <div className="flex items-center gap-2 mb-6">
         <Home className="h-4 w-4 text-muted-foreground" />
         <a href="/" className="text-muted-foreground hover:text-foreground text-sm">
