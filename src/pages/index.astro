@@ -1,20 +1,13 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
-import { Button } from "@/components/ui/button";
-import Link from "@/components/Link.astro";
+import Home from "@/components/Home";
 ---
 
 <MainLayout
   title="Beranda | Kamus Bahasa Moy"
   description="Aplikasi kamus bahasa Moy dari Jayapura, Papua dengan terjemahan bahasa Indonesia"
 >
-  <div class="grid place-items-center h-screen content-center">
-    <p class="pb-4 max-w-md text-center">
-      Selamat datang di Kamus Bahasa Moy, aplikasi kamus bahasa Moy dari
-      Jayapura, Papua dengan terjemahan bahasa Indonesia.
-    </p>
-    <Button variant="outline" size="sm">
-      <Link href="/tentang/">Tentang Kami</Link>
-    </Button>
-  </div>
+  <main class="h-screen bg-white mx-auto px-4 md:px-8">
+    <Home client:load />
+  </main>
 </MainLayout>

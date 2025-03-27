@@ -1,5 +1,10 @@
 @import 'tailwindcss';
 @import "tw-animate-css";
+@plugin '@tailwindcss/typography';
+
+body {
+  font-family: 'Inter Variable', sans-serif;
+}
 
 @custom-variant dark (&:is(.dark *));
 
