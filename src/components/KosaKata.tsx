@@ -49,20 +49,25 @@ const getCategoryIcon = (category: string) => {
 }
 
 // Function to get all meanings as a string
-const getMeaningsAsString = (meanings: Array<{ id: number; name: string }>) => {
+const getMeaningsAsString = (meanings: Array<{ id: number; name: string }> | null | undefined) => {
+  if (!meanings || meanings.length === 0) return "Tidak ada arti"
   return meanings.map((meaning) => meaning.name).join(", ")
 }
 
 const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 
+// Safely filter and extract unique categories
+const safeData = dictionaryData.filter((word) => word && word.word_class_id && word.word_class_id.name)
+const uniqueCategories = Array.from(new Set(safeData.map((word) => word.word_class_id.name)))
+
 // Extract unique categories from dictionary data
 const categories = [
   { id: "all", name: "Semua" },
-  ...Array.from(new Set(dictionaryData.map((word) => word.word_class_id.name))).map((name) => {
-    const word = dictionaryData.find((w) => w.word_class_id.name === name)
+  ...uniqueCategories.map((name) => {
+    const word = safeData.find((w) => w.word_class_id.name === name)
     return {
-      id: word?.word_class_id.name || "",
-      name: `${name.charAt(0).toUpperCase() + name.slice(1)} (${word?.word_class_id.abbreviation || ""})`,
+      id: name,
+      name: `${String(name).charAt(0).toUpperCase() + String(name).slice(1)} (${word?.word_class_id?.abbreviation || ""})`,
     }
   }),
 ]
@@ -80,18 +85,25 @@ export default function KosaKataPage() {
   const filteredVocabulary = useMemo(() => {
     return dictionaryData
       .filter((word) => {
+        if (!word || !word.text) return false
+
         const matchesSearch =
           searchQuery === "" ||
           word.text.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          word.meanings.some((meaning) => meaning.name.toLowerCase().includes(searchQuery.toLowerCase()))
+          (word.meanings &&
+            word.meanings.some((meaning: {name: string}) => meaning?.name?.toLowerCase().includes(searchQuery.toLowerCase())))
 
-        const matchesCategory = selectedCategory === "all" || word.word_class_id.name === selectedCategory
+        const matchesCategory =
+          selectedCategory === "all" || (word.word_class_id && word.word_class_id.name === selectedCategory)
 
-        const matchesLetter = selectedLetter === "" || word.text.toUpperCase().startsWith(selectedLetter)
+        const matchesLetter = selectedLetter === "" || (word.text && word.text.toUpperCase().startsWith(selectedLetter))
 
         return matchesSearch && matchesCategory && matchesLetter
       })
       .sort((a, b) => {
+        if (!a.text) return 1
+        if (!b.text) return -1
+
         if (sortOrder === "asc") {
           return a.text.localeCompare(b.text)
         } else {
@@ -110,17 +122,19 @@ export default function KosaKataPage() {
   }
 
   // Function to get related words data
-  const getRelatedWords = (relatedIds: number[]) => {
+  const getRelatedWords = (relatedIds: number[] | null | undefined) => {
+    if (!relatedIds || relatedIds.length === 0) return []
     return relatedIds
       .map((id) => {
-        const word = dictionaryData.find((w) => w.id === id)
+        const word = dictionaryData.find((w) => w && w.id === id)
         return word ? word.text : ""
       })
       .filter(Boolean)
   }
 
   return (
-    <div className="flex flex-col max-w-screen-xl mx-auto px-4 py-6 md:px-8">
+
+    <div className="max-w-screen-xl mx-auto px-4 py-6 md:px-8">
       <div className="flex items-center gap-2 mb-6">
         <Home className="h-4 w-4 text-muted-foreground" />
         <a href="/" className="text-muted-foreground hover:text-foreground text-sm">
@@ -151,7 +165,7 @@ export default function KosaKataPage() {
         </div>
 
         <div className="w-full space-y-4">
-          <Card className="shadow-none">
+          <Card>
             <CardHeader className="pb-3">
               <div className="flex flex-col md:flex-row md:justify-between md:items-center">
                 <div>
@@ -172,7 +186,7 @@ export default function KosaKataPage() {
                       <Button variant="outline" size="sm" className="h-8">
                         {selectedCategory === "all"
                           ? "Semua Kategori"
-                          : categories.find((c) => c.id === selectedCategory)?.name}
+                          : categories.find((c) => c.id === selectedCategory)?.name || "Kategori"}
                         <ChevronDown className="ml-2 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
@@ -192,7 +206,7 @@ export default function KosaKataPage() {
                               {category.name}
                             </div>
                             <span className="ml-auto text-xs text-muted-foreground">
-                              {dictionaryData.filter((word) => word.word_class_id.name === category.id).length}
+                              {dictionaryData.filter((word) => word?.word_class_id?.name === category.id).length}
                             </span>
                           </DropdownMenuRadioItem>
                         ))}
@@ -263,6 +277,7 @@ export default function KosaKataPage() {
                   </Button>
                 ))}
               </div>
+
               <ScrollArea className="h-[500px] pr-4">
                 {filteredVocabulary.length > 0 ? (
                   viewMode === "grid" ? (
@@ -279,19 +294,19 @@ export default function KosaKataPage() {
                           <DialogTrigger asChild>
                             <Card className="rounded-sm shadow-none py-2 cursor-pointer hover:bg-muted/50 transition-colors">
                               <CardContent>
-                                <div className="flex justify-between items-start">
+                              <div className="flex justify-between items-start">
                                   <div>
-                                    <h3 className="font-medium">{word.text}</h3>
+                                    <h3 className="font-medium">{word.text || "Tidak ada kata"}</h3>
                                     <p className="text-sm text-muted-foreground">
                                       {getMeaningsAsString(word.meanings)}
                                     </p>
                                   </div>
                                   <Badge
                                     variant="outline"
-                                    className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id.name)}`}
+                                    className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id?.name || "")}`}
                                   >
-                                    {getCategoryIcon(word.word_class_id.name)}
-                                    {word.word_class_id.name}
+                                    {getCategoryIcon(word.word_class_id?.name || "")}
+                                    {word.word_class_id?.name || "Tidak ada kategori"}
                                   </Badge>
                                 </div>
                               </CardContent>
@@ -301,12 +316,12 @@ export default function KosaKataPage() {
                             <DialogHeader className="pr-6">
                               <div className="flex items-center justify-between">
                                 <DialogTitle className="flex items-center gap-2 text-2xl">
-                                  {word.text}
+                                  {word.text || "Tidak ada kata"}
                                   <Button
                                     variant="ghost"
                                     size="icon"
                                     className="h-8 w-8"
-                                    onClick={() => speakText(word.text)}
+                                    onClick={() => speakText(word.text || "")}
                                   >
                                     <Volume2 className="h-4 w-4" />
                                   </Button>
@@ -314,10 +329,12 @@ export default function KosaKataPage() {
                                 <div className="flex gap-1 mr-4">
                                   <Badge
                                     variant="outline"
-                                    className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id.name)}`}
+                                    className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id?.name || "")}`}
                                   >
-                                    {getCategoryIcon(word.word_class_id.name)}
-                                    <span className="truncate max-w-[80px]">{word.word_class_id.name}</span>
+                                    {getCategoryIcon(word.word_class_id?.name || "")}
+                                    <span className="truncate max-w-[80px]">
+                                      {word.word_class_id?.name || "Tidak ada kategori"}
+                                    </span>
                                   </Badge>
                                 </div>
                               </div>
@@ -329,15 +346,21 @@ export default function KosaKataPage() {
                             <div className="space-y-4 py-4">
                               <div>
                                 <h4 className="text-sm font-medium text-muted-foreground mb-2">Definisi</h4>
-                                <p className="text-sm">{word.definition}</p>
+                                <p className="text-sm">{word.definition || "Tidak ada definisi"}</p>
                               </div>
 
                               <div>
                                 <h4 className="text-sm font-medium text-muted-foreground mb-1">Contoh Kalimat</h4>
-                                <div className="bg-muted/30 p-3 rounded-md">
-                                  <p className="text-sm">{word.example_original}</p>
-                                  <p className="text-sm text-muted-foreground mt-1">{word.example_translation}</p>
-                                </div>
+                                {word.example_original || word.example_translation ? (
+                                  <div className="bg-muted/30 p-3 rounded-md">
+                                    <p className="text-sm">{word.example_original || "Tidak ada contoh kalimat"}</p>
+                                    <p className="text-sm text-muted-foreground mt-1">
+                                      {word.example_translation || "Tidak ada terjemahan"}
+                                    </p>
+                                  </div>
+                                ) : (
+                                  <p className="text-sm text-muted-foreground">Tidak ada contoh kalimat</p>
+                                )}
                               </div>
 
                               {word.pronunciation && (
@@ -351,29 +374,33 @@ export default function KosaKataPage() {
 
                               <div>
                                 <h4 className="text-sm font-medium text-muted-foreground mb-2">Kata Terkait</h4>
-                                <div className="flex flex-wrap gap-2">
-                                  {getRelatedWords(word.related_words).map((relatedWord, index) => (
-                                    <Button
-                                      key={index}
-                                      variant="outline"
-                                      size="sm"
-                                      className="rounded-full"
-                                      onClick={() => {
-                                        const relatedWordData = dictionaryData.find(
-                                          (w) => w.text.toLowerCase() === relatedWord.toLowerCase(),
-                                        )
-                                        if (relatedWordData) {
-                                          setDialogOpen(false)
-                                          setTimeout(() => {
-                                            setSearchQuery(relatedWord)
-                                          }, 100)
-                                        }
-                                      }}
-                                    >
-                                      {relatedWord}
-                                    </Button>
-                                  ))}
-                                </div>
+                                {getRelatedWords(word.related_words).length > 0 ? (
+                                  <div className="flex flex-wrap gap-2">
+                                    {getRelatedWords(word.related_words).map((relatedWord, index) => (
+                                      <Button
+                                        key={index}
+                                        variant="outline"
+                                        size="sm"
+                                        className="rounded-full"
+                                        onClick={() => {
+                                          const relatedWordData = dictionaryData.find(
+                                            (w) => w && w.text && w.text.toLowerCase() === relatedWord.toLowerCase(),
+                                          )
+                                          if (relatedWordData) {
+                                            setDialogOpen(false)
+                                            setTimeout(() => {
+                                              setSearchQuery(relatedWord)
+                                            }, 100)
+                                          }
+                                        }}
+                                      >
+                                        {relatedWord}
+                                      </Button>
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <p className="text-sm text-muted-foreground">Tidak ada kata terkait</p>
+                                )}
                               </div>
                             </div>
                           </DialogContent>
@@ -395,10 +422,10 @@ export default function KosaKataPage() {
                             <div className="flex justify-between items-center p-3 rounded-md hover:bg-muted/50 transition-colors cursor-pointer border">
                               <div className="flex items-center gap-3">
                                 <div
-                                  className={`w-1.5 h-10 rounded-full ${getCategoryColor(word.word_class_id.name).split(" ")[0]}`}
+                                  className={`w-1.5 h-10 rounded-full ${getCategoryColor(word.word_class_id?.name || "").split(" ")[0]}`}
                                 ></div>
                                 <div>
-                                  <h3 className="font-medium">{word.text}</h3>
+                                  <h3 className="font-medium">{word.text || "Tidak ada kata"}</h3>
                                   <p className="text-sm text-muted-foreground">
                                     {getMeaningsAsString(word.meanings)}
                                   </p>
@@ -406,10 +433,10 @@ export default function KosaKataPage() {
                               </div>
                               <Badge
                                 variant="outline"
-                                className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id.name)}`}
+                                className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id?.name || "")}`}
                               >
-                                {getCategoryIcon(word.word_class_id.name)}
-                                {word.word_class_id.name}
+                                {getCategoryIcon(word.word_class_id?.name || "")}
+                                {word.word_class_id?.name || "Tidak ada kategori"}
                               </Badge>
                             </div>
                           </DialogTrigger>
@@ -417,12 +444,12 @@ export default function KosaKataPage() {
                             <DialogHeader className="pr-6">
                               <div className="flex items-center justify-between">
                                 <DialogTitle className="flex items-center gap-2 text-2xl">
-                                  {word.text}
+                                  {word.text || "Tidak ada kata"}
                                   <Button
                                     variant="ghost"
                                     size="icon"
                                     className="h-8 w-8"
-                                    onClick={() => speakText(word.text)}
+                                    onClick={() => speakText(word.text || "")}
                                   >
                                     <Volume2 className="h-4 w-4" />
                                   </Button>
@@ -430,10 +457,12 @@ export default function KosaKataPage() {
                                 <div className="flex gap-1 mr-4">
                                   <Badge
                                     variant="outline"
-                                    className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id.name)}`}
+                                    className={`text-xs flex items-center gap-1 ${getCategoryColor(word.word_class_id?.name || "")}`}
                                   >
-                                    {getCategoryIcon(word.word_class_id.name)}
-                                    <span className="truncate max-w-[80px]">{word.word_class_id.name}</span>
+                                    {getCategoryIcon(word.word_class_id?.name || "")}
+                                    <span className="truncate max-w-[80px]">
+                                      {word.word_class_id?.name || "Tidak ada kategori"}
+                                    </span>
                                   </Badge>
                                 </div>
                               </div>
@@ -445,15 +474,21 @@ export default function KosaKataPage() {
                             <div className="space-y-4 py-4">
                               <div>
                                 <h4 className="text-sm font-medium text-muted-foreground mb-2">Definisi</h4>
-                                <p className="text-sm">{word.definition}</p>
+                                <p className="text-sm">{word.definition || "Tidak ada definisi"}</p>
                               </div>
 
                               <div>
                                 <h4 className="text-sm font-medium text-muted-foreground mb-1">Contoh Kalimat</h4>
-                                <div className="bg-muted/30 p-3 rounded-md">
-                                  <p className="text-sm">{word.example_original}</p>
-                                  <p className="text-sm text-muted-foreground mt-1">{word.example_translation}</p>
-                                </div>
+                                {word.example_original || word.example_translation ? (
+                                  <div className="bg-muted/30 p-3 rounded-md">
+                                    <p className="text-sm">{word.example_original || "Tidak ada contoh kalimat"}</p>
+                                    <p className="text-sm text-muted-foreground mt-1">
+                                      {word.example_translation || "Tidak ada terjemahan"}
+                                    </p>
+                                  </div>
+                                ) : (
+                                  <p className="text-sm text-muted-foreground">Tidak ada contoh kalimat</p>
+                                )}
                               </div>
 
                               {word.pronunciation && (
@@ -467,29 +502,33 @@ export default function KosaKataPage() {
 
                               <div>
                                 <h4 className="text-sm font-medium text-muted-foreground mb-2">Kata Terkait</h4>
-                                <div className="flex flex-wrap gap-2">
-                                  {getRelatedWords(word.related_words).map((relatedWord, index) => (
-                                    <Button
-                                      key={index}
-                                      variant="outline"
-                                      size="sm"
-                                      className="rounded-full"
-                                      onClick={() => {
-                                        const relatedWordData = dictionaryData.find(
-                                          (w) => w.text.toLowerCase() === relatedWord.toLowerCase(),
-                                        )
-                                        if (relatedWordData) {
-                                          setDialogOpen(false)
-                                          setTimeout(() => {
-                                            setSearchQuery(relatedWord)
-                                          }, 100)
-                                        }
-                                      }}
-                                    >
-                                      {relatedWord}
-                                    </Button>
-                                  ))}
-                                </div>
+                                {getRelatedWords(word.related_words).length > 0 ? (
+                                  <div className="flex flex-wrap gap-2">
+                                    {getRelatedWords(word.related_words).map((relatedWord, index) => (
+                                      <Button
+                                        key={index}
+                                        variant="outline"
+                                        size="sm"
+                                        className="rounded-full"
+                                        onClick={() => {
+                                          const relatedWordData = dictionaryData.find(
+                                            (w) => w && w.text && w.text.toLowerCase() === relatedWord.toLowerCase(),
+                                          )
+                                          if (relatedWordData) {
+                                            setDialogOpen(false)
+                                            setTimeout(() => {
+                                              setSearchQuery(relatedWord)
+                                            }, 100)
+                                          }
+                                        }}
+                                      >
+                                        {relatedWord}
+                                      </Button>
+                                    ))}
+                                  </div>
+                                ) : (
+                                  <p className="text-sm text-muted-foreground">Tidak ada kata terkait</p>
+                                )}
                               </div>
                             </div>
                           </DialogContent>
@@ -510,6 +549,7 @@ export default function KosaKataPage() {
         </div>
       </div>
     </div>
+
   )
 }
 

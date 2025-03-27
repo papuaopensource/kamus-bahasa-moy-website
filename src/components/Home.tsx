@@ -65,12 +65,18 @@ const getCategoryIcon = (category: string) => {
   return <Sparkles className="h-3.5 w-3.5" />
 }
 
-// Extract unique categories
-const categories = Array.from(new Set(dictionaryData.map((word) => word.word_class_id.name))).map((name) => {
-  const word = dictionaryData.find((w) => w.word_class_id.name === name)
+// Extract unique categories - dengan penanganan null/undefined
+const categories = Array.from(
+  new Set(
+    dictionaryData
+      .filter((word) => word?.word_class_id?.name) // Filter out entries with missing word_class_id or name
+      .map((word) => word.word_class_id.name),
+  ),
+).map((name) => {
+  const word = dictionaryData.find((w) => w?.word_class_id?.name === name)
   return {
     id: name,
-    name: `${name.charAt(0).toUpperCase() + name.slice(1)} (${word?.word_class_id.abbreviation || ""})`,
+    name: `${String(name).charAt(0).toUpperCase() + String(name).slice(1)} (${word?.word_class_id?.abbreviation || ""})`,
   }
 })
 
@@ -116,17 +122,19 @@ export default function KamusApp() {
   }, [isCopied])
 
   // Function to get related words by IDs
-  const getRelatedWords = (relatedIds: number[], showMoyWords: boolean) => {
+  const getRelatedWords = (relatedIds: number[] | null | undefined, showMoyWords: boolean) => {
+    if (!relatedIds || relatedIds.length === 0) return []
     return relatedIds
       .map((id) => {
         const word = dictionaryData.find((w) => w.id === id)
-        return word ? (showMoyWords ? word.text : word.meanings[0]?.name || "") : ""
+        return word ? (showMoyWords ? word.text : word.meanings?.[0]?.name || "") : ""
       })
       .filter(Boolean)
   }
 
   // Function to get all meanings as a string
-  const getMeaningsAsString = (meanings: Array<{ id: number; name: string }>) => {
+  const getMeaningsAsString = (meanings: Array<{ id: number; name: string }> | null | undefined) => {
+    if (!meanings || meanings.length === 0) return "Tidak ada arti"
     return meanings.map((meaning) => meaning.name).join(", ")
   }
 
@@ -141,19 +149,19 @@ export default function KamusApp() {
         // Moy to Indonesia
         // Coba cari frasa lengkap terlebih dahulu
         const moyPhrase = text.toLowerCase().trim()
-        const foundPhrase = dictionaryData.find((item) => item.text.toLowerCase() === moyPhrase)
+        const foundPhrase = dictionaryData.find((item) => item.text?.toLowerCase() === moyPhrase)
 
         if (foundPhrase) {
           // Jika frasa lengkap ditemukan
-          result = foundPhrase.meanings[0]?.name || ""
+          result = foundPhrase.meanings?.[0]?.name || "Tidak ada terjemahan"
           foundWords.push(foundPhrase)
         } else {
           // Jika tidak, coba terjemahkan kata per kata
           const words = text.toLowerCase().split(/\s+/)
           words.forEach((word) => {
-            const found = dictionaryData.find((item) => item.text.toLowerCase() === word.toLowerCase())
+            const found = dictionaryData.find((item) => item.text?.toLowerCase() === word.toLowerCase())
             if (found) {
-              result += found.meanings[0]?.name + " "
+              result += (found.meanings?.[0]?.name || "Tidak ada terjemahan") + " "
               foundWords.push(found)
             } else {
               result += word + " "
@@ -165,22 +173,22 @@ export default function KamusApp() {
         // Coba cari frasa lengkap terlebih dahulu
         const indoPhrase = text.toLowerCase().trim()
         const foundPhrase = dictionaryData.find((item) =>
-          item.meanings.some((meaning) => meaning.name.toLowerCase() === indoPhrase),
+          item.meanings?.some((meaning: { name: string }) => meaning.name?.toLowerCase() === indoPhrase),
         )
 
         if (foundPhrase) {
           // Jika frasa lengkap ditemukan
-          result = foundPhrase.text
+          result = foundPhrase.text || "Tidak ada terjemahan"
           foundWords.push(foundPhrase)
         } else {
           // Jika tidak, coba terjemahkan kata per kata
           const words = text.toLowerCase().split(/\s+/)
           words.forEach((word) => {
             const found = dictionaryData.find((item) =>
-              item.meanings.some((meaning) => meaning.name.toLowerCase() === word.toLowerCase()),
+              item.meanings?.some((meaning: { name: string }) => meaning.name?.toLowerCase() === word.toLowerCase()),
             )
             if (found) {
-              result += found.text + " "
+              result += (found.text || "Tidak ada terjemahan") + " "
               foundWords.push(found)
             } else {
               result += word + " "
@@ -265,8 +273,8 @@ export default function KamusApp() {
     // Check if the word is already in the dictionary
     const exactMatch = dictionaryData.some((word) => {
       const searchField = isReversed
-        ? word.text.toLowerCase() === lastWord
-        : word.meanings.some((m) => m.name.toLowerCase() === lastWord)
+        ? word.text?.toLowerCase() === lastWord
+        : word.meanings?.some((m: { name: string }) => m.name?.toLowerCase() === lastWord)
       return searchField
     })
 
@@ -280,11 +288,12 @@ export default function KamusApp() {
     const wordSuggestions = dictionaryData
       .filter((word) => {
         const searchField = isReversed
-          ? word.text.toLowerCase().startsWith(lastWord)
-          : word.meanings.some((m) => m.name.toLowerCase().startsWith(lastWord))
+          ? word.text?.toLowerCase()?.startsWith(lastWord)
+          : word.meanings?.some((m: { name: string }) => m.name?.toLowerCase()?.startsWith(lastWord))
         return searchField
       })
-      .map((word) => (isReversed ? word.text : word.meanings[0]?.name || ""))
+      .map((word) => (isReversed ? word.text : word.meanings?.[0]?.name || ""))
+      .filter(Boolean) // Filter out empty strings
 
     // Phrase suggestions
     const phraseSuggestions = []
@@ -342,324 +351,342 @@ export default function KamusApp() {
   }, [selectedRelatedWord])
 
   return (
-    <>
-      <div className="max-w-screen-xl mx-auto py-8 md:px-8 md:py-12">
-        <div className="grid grid-cols-1 gap-6">
-          {/* Language selector tabs */}
-          <div className="flex items-center justify-between">
-            <div className="flex-1 flex justify-start">
-              <div className="px-4 py-2 font-medium border-b-2 border-primary text-primary">
-                {isReversed ? "Moy" : "Indonesia"}
-              </div>
-            </div>
-
-            <Button variant="ghost" size="icon" onClick={swapLanguages} className="mx-2">
-              <ArrowLeftRight className="h-5 w-5" />
-            </Button>
-
-            <div className="flex-1 flex justify-start">
-              <div className="px-4 py-2 font-medium border-b-2 border-primary text-primary">
-                {isReversed ? "Indonesia" : "Moy"}
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Input area */}
-            <div className="relative">
-              <Textarea
-                ref={inputRef}
-                placeholder="Masukan teks"
-                className="min-h-[200px] resize-none p-4 rounded-md border focus-visible:ring-1 focus-visible:ring-primary"
-                value={inputText}
-                onChange={(e) => {
-                  setInputText(e.target.value)
-                  generateAutoCompleteSuggestions(e.target.value)
-                }}
-                onFocus={() => generateAutoCompleteSuggestions(inputText)}
-                maxLength={5000}
-              />
-
-              {/* Autocomplete suggestions */}
-              {showAutoComplete && autoCompleteSuggestions.length > 0 && (
-                <div
-                  ref={suggestionsRef}
-                  className="absolute left-0 right-0 mt-1 bg-background border rounded-md shadow-md z-10"
-                >
-                  <ScrollArea className="max-h-[200px]">
-                    {autoCompleteSuggestions.map((suggestion, index) => {
-                      const matchWord = dictionaryData.find((w) =>
-                        isReversed
-                          ? w.meanings.some((m) => m.name === suggestion)
-                          : w.text.toLowerCase() === suggestion.toLowerCase(),
-                      )
-
-                      return (
-                        <div
-                          key={index}
-                          className="px-3 py-2 hover:bg-muted cursor-pointer"
-                          onClick={() => applySuggestion(suggestion)}
-                        >
-                          <div className="flex flex-col">
-                            <span className="font-medium">{suggestion}</span>
-                            {matchWord && (
-                              <span className="text-xs text-muted-foreground">
-                                {isReversed ? matchWord.text : matchWord.meanings[0]?.name || ""}
-                              </span>
-                            )}
-                          </div>
-                        </div>
-                      )
-                    })}
-                  </ScrollArea>
+      <>
+        <div className="max-w-screen-xl mx-auto py-8 md:px-8 md:py-12">
+          <div className="grid grid-cols-1 gap-6">
+            {/* Language selector tabs */}
+            <div className="flex items-center justify-between">
+              <div className="flex-1 flex justify-start">
+                <div className="px-4 py-2 font-medium border-b-2 border-primary text-primary">
+                  {isReversed ? "Moy" : "Indonesia"}
                 </div>
-              )}
+              </div>
+
+              <Button variant="ghost" size="icon" onClick={swapLanguages} className="mx-2">
+                <ArrowLeftRight className="h-5 w-5" />
+              </Button>
+
+              <div className="flex-1 flex justify-start">
+                <div className="px-4 py-2 font-medium border-b-2 border-primary text-primary">
+                  {isReversed ? "Indonesia" : "Moy"}
+                </div>
+              </div>
             </div>
 
-            {/* Output area */}
-            <div className="relative min-h-[200px] bg-muted/30 rounded-md p-4">
-              {translatedText ? (
-                <div>
-                  <p className="text-lg">{translatedText}</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Input area */}
+              <div className="relative">
+                <Textarea
+                  ref={inputRef}
+                  placeholder="Masukan teks"
+                  className="min-h-[200px] resize-none p-4 rounded-md border focus-visible:ring-1 focus-visible:ring-primary"
+                  value={inputText}
+                  onChange={(e) => {
+                    setInputText(e.target.value)
+                    generateAutoCompleteSuggestions(e.target.value)
+                  }}
+                  onFocus={() => generateAutoCompleteSuggestions(inputText)}
+                  maxLength={5000}
+                />
 
-                  {currentWordDetails && (
-                    <div className="mt-4 space-y-3">
-                      <div className="flex items-center gap-2">
-                        <Badge
-                          variant="outline"
-                          className={`text-xs flex items-center gap-1 ${getCategoryColor(currentWordDetails.word_class_id.name)}`}
-                        >
-                          {getCategoryIcon(currentWordDetails.word_class_id.name)}
-                          <span className="truncate max-w-[80px]">{currentWordDetails.word_class_id.name}</span>
-                        </Badge>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          className="h-7 px-2 text-xs cursor-pointer"
-                          onClick={() => setWordDetailsOpen(true)}
-                        >
-                          <Info className="h-3 w-3 mr-1" />
-                          Detail
-                        </Button>
-                      </div>
+                {/* Autocomplete suggestions */}
+                {showAutoComplete && autoCompleteSuggestions.length > 0 && (
+                  <div
+                    ref={suggestionsRef}
+                    className="absolute left-0 right-0 mt-1 bg-background border rounded-md shadow-md z-10"
+                  >
+                    <ScrollArea className="max-h-[200px]">
+                      {autoCompleteSuggestions.map((suggestion, index) => {
+                        const matchWord = dictionaryData.find((w) =>
+                          isReversed
+                            ? w.meanings?.some((m: { name: string }) => m.name === suggestion)
+                            : w.text?.toLowerCase() === suggestion.toLowerCase(),
+                        )
 
-                      {currentWordDetails.example_original && (
-                        <div className="text-sm border-l-2 border-muted-foreground/20 pl-3 mt-2">
-                          <p className="text-muted-foreground">{currentWordDetails.example_original}</p>
-                          <p className="text-xs text-muted-foreground/70 mt-1">
-                            {currentWordDetails.example_translation}
-                          </p>
+                        return (
+                          <div
+                            key={index}
+                            className="px-3 py-2 hover:bg-muted cursor-pointer"
+                            onClick={() => applySuggestion(suggestion)}
+                          >
+                            <div className="flex flex-col">
+                              <span className="font-medium">{suggestion}</span>
+                              {matchWord && (
+                                <span className="text-xs text-muted-foreground">
+                                  {isReversed ? matchWord.text : matchWord.meanings?.[0]?.name || ""}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        )
+                      })}
+                    </ScrollArea>
+                  </div>
+                )}
+              </div>
+
+              {/* Output area */}
+              <div className="relative min-h-[200px] bg-muted/30 rounded-md p-4">
+                {translatedText ? (
+                  <div>
+                    <p className="text-lg">{translatedText}</p>
+
+                    {currentWordDetails && (
+                      <div className="mt-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <Badge
+                            variant="outline"
+                            className={`text-xs flex items-center gap-1 ${getCategoryColor(currentWordDetails.word_class_id?.name || "")}`}
+                          >
+                            {getCategoryIcon(currentWordDetails.word_class_id?.name || "")}
+                            <span className="truncate max-w-[80px]">
+                              {currentWordDetails.word_class_id?.name || "Tidak ada kategori"}
+                            </span>
+                          </Badge>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            className="h-7 px-2 text-xs"
+                            onClick={() => setWordDetailsOpen(true)}
+                          >
+                            <Info className="h-3 w-3 mr-1" />
+                            Detail
+                          </Button>
                         </div>
-                      )}
-                    </div>
+
+                        {currentWordDetails.example_original && (
+                          <div className="text-sm border-l-2 border-muted-foreground/20 pl-3 mt-2">
+                            <p className="text-muted-foreground">{currentWordDetails.example_original}</p>
+                            <p className="text-xs text-muted-foreground/70 mt-1">
+                              {currentWordDetails.example_translation || "Tidak ada terjemahan"}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="text-muted-foreground">Terjemahan</div>
+                )}
+
+                <div className="absolute bottom-2 right-2 flex items-center gap-2">
+                  {translatedText && (
+                    <>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 rounded-full"
+                        onClick={() => speakText(translatedText)}
+                      >
+                        <Volume2 className="h-4 w-4" />
+                      </Button>
+                      <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full" onClick={copyToClipboard}>
+                        {isCopied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
+                      </Button>
+                    </>
                   )}
                 </div>
-              ) : (
-                <div className="text-muted-foreground">Terjemahan</div>
-              )}
-
-              <div className="absolute bottom-2 right-2 flex items-center gap-2">
-                {translatedText && (
-                  <>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8 rounded-full cursor-pointer"
-                      onClick={() => speakText(translatedText)}
-                    >
-                      <Volume2 className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full cursor-pointer" onClick={copyToClipboard}>
-                      {isCopied ? <Check className="h-4 w-4" /> : <Clipboard className="h-4 w-4" />}
-                    </Button>
-                  </>
-                )}
               </div>
             </div>
-          </div>
 
-          {/* Related words section */}
-          {relatedWords.length > 0 && (
-            <div ref={relatedWordsRef} className="pt-4 border-t">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-sm font-medium flex items-center gap-2">
-                  <Sparkles className="h-4 w-4 text-primary" />
-                  Terjemahan Lainnya
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {relatedWords.map((word, index) => {
-                  // Find word data in dictionary based on translation direction
-                  const wordData = !isReversed
-                    ? dictionaryData.find((w) => w.text.toLowerCase() === word.toLowerCase())
-                    : dictionaryData.find((w) => w.meanings.some((m) => m.name.toLowerCase() === word.toLowerCase()))
-
-                  return (
-                    <div
-                      key={index}
-                      className={`group relative px-3 py-2 rounded-full border ${
-                        wordData ? getCategoryColor(wordData.word_class_id.name).split(" ")[0] : "bg-muted"
-                      } hover:shadow-md transition-all cursor-pointer`}
-                      onClick={() => setSelectedRelatedWord(word)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span className="font-medium">{word}</span>
-                        {wordData && (
-                          <Badge variant="outline" className="text-xs bg-white/80 dark:bg-black/30">
-                            {isReversed ? wordData.text : wordData.meanings[0]?.name || ""}
-                          </Badge>
-                        )}
-                        {wordData && (
-                          <div className="absolute right-1 top-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                            <Button
-                              variant="ghost"
-                              size="sm"
-                              className="h-6 w-6 p-0"
-                              onClick={(e) => {
-                                e.stopPropagation()
-                                showWordDetails(wordData)
-                              }}
-                            >
-                              <Info className="h-3 w-3" />
-                            </Button>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )
-                })}
-                <Button variant="outline" size="sm" className="flex items-center gap-1 rounded-full" asChild>
-                  <a href="/kosa-kata">
-                    <span>Lihat semua kata</span>
-                    <ExternalLink className="h-3 w-3 ml-1" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          )}
-
-          <div className="flex justify-end">
-            <Dialog open={feedbackDialogOpen} onOpenChange={setFeedbackDialogOpen}>
-              <DialogTrigger asChild>
-                <Button variant="link" size="sm" className="text-muted-foreground cursor-pointer">
-                  Kirim masukan
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[425px]">
-                <DialogHeader>
-                  <DialogTitle>Kirim Masukan</DialogTitle>
-                  <DialogDescription>
-                    Bantu kami meningkatkan kualitas terjemahan dengan memberikan saran atau koreksi.
-                  </DialogDescription>
-                </DialogHeader>
-                <div className="grid gap-4 py-4">
-                  <div className="grid gap-2">
-                    <Label htmlFor="feedback">Masukan Anda</Label>
-                    <Textarea
-                      id="feedback"
-                      placeholder="Tulis masukan Anda di sini..."
-                      value={feedbackText}
-                      onChange={(e) => setFeedbackText(e.target.value)}
-                      className="min-h-[120px]"
-                    />
-                  </div>
+            {/* Related words section */}
+            {relatedWords.length > 0 && (
+              <div ref={relatedWordsRef} className="pt-4 border-t">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-medium flex items-center gap-2">
+                    <Sparkles className="h-4 w-4 text-primary" />
+                    Terjemahan Lainnya
+                  </h3>
                 </div>
-                <DialogFooter>
-                  <Button type="submit" onClick={handleFeedbackSubmit}>
-                    Kirim
+                <div className="flex flex-wrap gap-2">
+                  {relatedWords.map((word, index) => {
+                    // Find word data in dictionary based on translation direction
+                    const wordData = !isReversed
+                      ? dictionaryData.find((w) => w.text?.toLowerCase() === word.toLowerCase())
+                      : dictionaryData.find((w) =>
+                          w.meanings?.some((m: { name: string }) => m.name?.toLowerCase() === word.toLowerCase()),
+                        )
+
+                    return (
+                      <div
+                        key={index}
+                        className={`group relative px-3 py-2 rounded-full border ${
+                          wordData && wordData.word_class_id?.name
+                            ? getCategoryColor(wordData.word_class_id.name).split(" ")[0]
+                            : "bg-muted"
+                        } hover:shadow-md transition-all cursor-pointer`}
+                        onClick={() => setSelectedRelatedWord(word)}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="font-medium">{word}</span>
+                          {wordData && (
+                            <Badge variant="outline" className="text-xs bg-white/80 dark:bg-black/30">
+                              {isReversed ? wordData.text : wordData.meanings?.[0]?.name || ""}
+                            </Badge>
+                          )}
+                          {wordData && (
+                            <div className="absolute right-1 top-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="h-6 w-6 p-0"
+                                onClick={(e) => {
+                                  e.stopPropagation()
+                                  showWordDetails(wordData)
+                                }}
+                              >
+                                <Info className="h-3 w-3" />
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    )
+                  })}
+                  <Button variant="outline" size="sm" className="flex items-center gap-1 rounded-full" asChild>
+                    <a href="/kosa-kata">
+                      <span>Lihat semua kata</span>
+                      <ExternalLink className="h-3 w-3 ml-1" />
+                    </a>
                   </Button>
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+                </div>
+              </div>
+            )}
+
+            <div className="flex justify-end">
+              <Dialog open={feedbackDialogOpen} onOpenChange={setFeedbackDialogOpen}>
+                <DialogTrigger asChild>
+                  <Button variant="link" size="sm" className="text-muted-foreground">
+                    Kirim masukan
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle>Kirim Masukan</DialogTitle>
+                    <DialogDescription>
+                      Bantu kami meningkatkan kualitas terjemahan dengan memberikan saran atau koreksi.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid gap-2">
+                      <Label htmlFor="feedback">Masukan Anda</Label>
+                      <Textarea
+                        id="feedback"
+                        placeholder="Tulis masukan Anda di sini..."
+                        value={feedbackText}
+                        onChange={(e) => setFeedbackText(e.target.value)}
+                        className="min-h-[120px]"
+                      />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <Button type="submit" onClick={handleFeedbackSubmit}>
+                      Kirim
+                    </Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
         </div>
-      </div>
-  
-      {/* Word Details Dialog */}
-      <Dialog open={wordDetailsOpen} onOpenChange={setWordDetailsOpen}>
-        <DialogContent className="sm:max-w-[500px]">
-          {currentWordDetails && (
-            <>
-              <DialogHeader className="pr-6">
-                <div className="flex items-center justify-between">
-                  <DialogTitle className="flex items-center gap-2 text-2xl">
-                    {currentWordDetails.text}
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8"
-                      onClick={() => speakText(currentWordDetails.text)}
-                    >
-                      <Volume2 className="h-4 w-4" />
-                    </Button>
-                  </DialogTitle>
-                  <div className="flex gap-1 mr-4">
-                    <Badge
-                      variant="outline"
-                      className={`text-xs flex items-center gap-1 ${getCategoryColor(currentWordDetails.word_class_id.name)}`}
-                    >
-                      {getCategoryIcon(currentWordDetails.word_class_id.name)}
-                      <span className="truncate max-w-[80px]">{currentWordDetails.word_class_id.name}</span>
-                    </Badge>
+
+        {/* Word Details Dialog */}
+        <Dialog open={wordDetailsOpen} onOpenChange={setWordDetailsOpen}>
+          <DialogContent className="sm:max-w-[500px]">
+            {currentWordDetails && (
+              <>
+                <DialogHeader className="pr-6">
+                  <div className="flex items-center justify-between">
+                    <DialogTitle className="flex items-center gap-2 text-2xl">
+                      {currentWordDetails.text || "Tidak ada kata"}
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8"
+                        onClick={() => speakText(currentWordDetails.text || "")}
+                      >
+                        <Volume2 className="h-4 w-4" />
+                      </Button>
+                    </DialogTitle>
+                    <div className="flex gap-1 mr-4">
+                      <Badge
+                        variant="outline"
+                        className={`text-xs flex items-center gap-1 ${getCategoryColor(currentWordDetails.word_class_id?.name || "")}`}
+                      >
+                        {getCategoryIcon(currentWordDetails.word_class_id?.name || "")}
+                        <span className="truncate max-w-[80px]">
+                          {currentWordDetails.word_class_id?.name || "Tidak ada kategori"}
+                        </span>
+                      </Badge>
+                    </div>
                   </div>
-                </div>
-                <DialogDescription className="text-base font-medium mt-1 text-left">
-                  {getMeaningsAsString(currentWordDetails.meanings)}
-                </DialogDescription>
-              </DialogHeader>
-  
-              <div className="space-y-4 py-4">
-                <div>
-                  <h4 className="text-sm font-medium text-muted-foreground mb-2">Definisi</h4>
-                  <p className="text-sm">{currentWordDetails.definition}</p>
-                </div>
-  
-                <div>
-                  <h4 className="text-sm font-medium text-muted-foreground mb-1">Contoh Kalimat</h4>
-                  <div className="bg-muted/30 p-3 rounded-md">
-                    <p className="text-sm">{currentWordDetails.example_original}</p>
-                    <p className="text-sm text-muted-foreground mt-1">{currentWordDetails.example_translation}</p>
-                  </div>
-                </div>
-  
-                {currentWordDetails.pronunciation && (
+                  <DialogDescription className="text-base font-medium mt-1 text-left">
+                    {getMeaningsAsString(currentWordDetails.meanings)}
+                  </DialogDescription>
+                </DialogHeader>
+
+                <div className="space-y-4 py-4">
                   <div>
-                    <h4 className="text-sm font-medium text-muted-foreground mb-1">Pengucapan</h4>
-                    <p className="text-sm">{currentWordDetails.pronunciation}</p>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Definisi</h4>
+                    <p className="text-sm">{currentWordDetails.definition || "Tidak ada definisi"}</p>
                   </div>
-                )}
-  
-                <Separator />
-  
-                <div>
-                  <h4 className="text-sm font-medium text-muted-foreground mb-2">Kata Terkait</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {getRelatedWords(currentWordDetails.related_words, isReversed).map(
-                      (word: string, index: number) => (
-                        <Button
-                          key={index}
-                          variant="outline"
-                          size="sm"
-                          className="rounded-full"
-                          onClick={() => {
-                            setInputText(word)
-                            setWordDetailsOpen(false)
-                          }}
-                        >
-                          {word}
-                        </Button>
-                      ),
+
+                  <div>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-1">Contoh Kalimat</h4>
+                    {currentWordDetails.example_original || currentWordDetails.example_translation ? (
+                      <div className="bg-muted/30 p-3 rounded-md">
+                        <p className="text-sm">{currentWordDetails.example_original || "Tidak ada contoh kalimat"}</p>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {currentWordDetails.example_translation || "Tidak ada terjemahan"}
+                        </p>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">Tidak ada contoh kalimat</p>
+                    )}
+                  </div>
+
+                  {currentWordDetails.pronunciation && (
+                    <div>
+                      <h4 className="text-sm font-medium text-muted-foreground mb-1">Pengucapan</h4>
+                      <p className="text-sm">{currentWordDetails.pronunciation}</p>
+                    </div>
+                  )}
+
+                  <Separator />
+
+                  <div>
+                    <h4 className="text-sm font-medium text-muted-foreground mb-2">Kata Terkait</h4>
+                    {getRelatedWords(currentWordDetails.related_words || [], isReversed).length > 0 ? (
+                      <div className="flex flex-wrap gap-2">
+                        {getRelatedWords(currentWordDetails.related_words || [], isReversed).map(
+                          (word: string, index: number) => (
+                            <Button
+                              key={index}
+                              variant="outline"
+                              size="sm"
+                              className="rounded-full"
+                              onClick={() => {
+                                setInputText(word)
+                                setWordDetailsOpen(false)
+                              }}
+                            >
+                              {word}
+                            </Button>
+                          ),
+                        )}
+                      </div>
+                    ) : (
+                      <p className="text-sm text-muted-foreground">Tidak ada kata terkait</p>
                     )}
                   </div>
                 </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-  
-      <Toaster />
-    </>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
+
+        <Toaster />
+      </>      
   )
 }
 
