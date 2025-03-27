@@ -246,7 +246,7 @@ export default function KosaKataPage() {
             <CardContent>
               <div className="flex flex-wrap gap-2 mb-4">
                 <Button
-                  variant={selectedLetter === "" ? "default" : "outline"}
+                  className={selectedLetter === "" ? "bg-primary text-white" : "bg-slate-100 text-black hover:text-white"}
                   size="sm"
                   onClick={() => setSelectedLetter("")}
                 >
@@ -255,7 +255,7 @@ export default function KosaKataPage() {
                 {alphabets.map((letter) => (
                   <Button
                     key={letter}
-                    variant={selectedLetter === letter ? "default" : "outline"}
+                    className={selectedLetter === letter ? "bg-primary text-white" : "bg-slate-100 text-black hover:text-white"}
                     size="sm"
                     onClick={() => setSelectedLetter(letter)}
                   >
@@ -263,7 +263,6 @@ export default function KosaKataPage() {
                   </Button>
                 ))}
               </div>
-
               <ScrollArea className="h-[500px] pr-4">
                 {filteredVocabulary.length > 0 ? (
                   viewMode === "grid" ? (
