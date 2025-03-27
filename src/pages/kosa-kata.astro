@@ -1,0 +1,12 @@
+---
+import Layout from "@/layouts/MainLayout.astro";
+
+import KosaKataPage from "@/components/KosaKata";
+---
+
+<Layout
+  title="Kosa Kata"
+  description="Daftar kosa kata dalam bahasa Indonesia dan terjemahannya dalam bahasa Moy"
+>
+  <KosaKataPage client:load />
+</Layout>
