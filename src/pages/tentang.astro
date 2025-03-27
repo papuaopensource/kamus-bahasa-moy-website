@@ -135,6 +135,48 @@ import { Separator } from "@/components/ui/separator";
         </CardContent>
       </Card>
 
+      <Card id="kontribusi" className="shadow-none">
+        <CardHeader className="pb-3">
+          <CardTitle className="flex items-center gap-2">
+            <Github className="h-5 w-5 text-primary" />
+            Berkontribusi
+          </CardTitle>
+          <CardDescription
+            >Informasi tentang cara berkontribusi pada proyek ini</CardDescription
+          >
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <p>
+            Kami sangat menghargai kontribusi dari komunitas untuk meningkatkan
+            dan mengembangkan Kamus Bahasa Moy. Ada banyak cara untuk
+            berkontribusi, baik Anda seorang pengembang, penerjemah, atau hanya
+            pengguna yang ingin membantu.
+          </p>
+          <p class="font-medium">Beberapa cara untuk berkontribusi:</p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Menambahkan atau memperbaiki terjemahan lagu dan kosakata</li>
+            <li>Melaporkan bug atau masalah yang Anda temukan</li>
+            <li>Menyarankan fitur baru atau peningkatan</li>
+            <li>Berkontribusi pada kode sumber dengan pull request</li>
+            <li>Membantu mendokumentasikan proyek</li>
+          </ul>
+          <div class="flex flex-col sm:flex-row gap-4 mt-4">
+            <Button className="flex items-center gap-2" variant="default">
+              <Link
+                href="https://github.com/papua-opensource/kamus-bahasa-moy-website/blob/main/CONTRIBUTING.md"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-1"
+              >
+                <Github className="h-4 w-4" />
+                <span>Panduan Kontribusi</span>
+                <ExternalLink className="h-3 w-3 ml-1" />
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+
       <Card className="shadow-none">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
