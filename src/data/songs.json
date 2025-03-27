@@ -1,0 +1,298 @@
+{
+  "songs": [
+    {
+      "id": 1,
+      "title": "Yamko Rambe Yamko",
+      "artist": "Lagu Daerah",
+      "composer": "Tradisional",
+      "audioUrl": null,
+      "description": "Lagu daerah Papua yang menceritakan semangat perjuangan rakyat Papua melawan penjajah",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Hee yamko rambe yamko aronawa kombe",
+            "Hee yamko rambe yamko aronawa kombe",
+            "Teemi nokibe kubano ko bombe ko",
+            "Yuma no bungo awe ade"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Hongke hongke hongke riro",
+            "Hongke jombe jombe riro",
+            "Hongke hongke hongke riro",
+            "Hongke jombe jombe riro"
+          ]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Hee yamko rambe yamko aronawa kombe",
+            "Hee yamko rambe yamko aronawa kombe",
+            "Teemi nokibe kubano ko bombe ko",
+            "Yuma no bungo awe ade"
+          ]
+        }
+      ],
+      "translation": [
+        {
+          "type": "verse",
+          "content": [
+            "Hei yamko rambe yamko gadis cantik",
+            "Hei yamko rambe yamko gadis cantik",
+            "Lihat kebunku penuh dengan bunga",
+            "Petiklah bunga itu"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Mari berdansa, mari berdansa",
+            "Mari berdansa, berputar-putar",
+            "Mari berdansa, mari berdansa",
+            "Mari berdansa, berputar-putar"
+          ]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Hei yamko rambe yamko gadis cantik",
+            "Hei yamko rambe yamko gadis cantik",
+            "Lihat kebunku penuh dengan bunga",
+            "Petiklah bunga itu"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Apuse",
+      "artist": "Lagu Daerah",
+      "composer": "Tradisional",
+      "audioUrl": "https://dash.kastauterjemahan.web.id/media/music/01-saumabu-bahasa-tepra.mp3",
+      "description": "Lagu daerah Papua yang berasal dari Biak, menceritakan tentang perpisahan dan kerinduan",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Apuse kokon dao",
+            "Wuf lenso bani nema baki pase",
+            "Apuse kokon dao",
+            "Wuf lenso bani nema baki pase"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": ["Arafabye aswarakwar", "Arafabye aswarakwar"]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Apuse kokon dao",
+            "Wuf lenso bani nema baki pase",
+            "Apuse kokon dao",
+            "Wuf lenso bani nema baki pase"
+          ]
+        }
+      ],
+      "translation": [
+        {
+          "type": "verse",
+          "content": [
+            "Kakek terbang jauh",
+            "Lambaikan sapu tangan merah putih",
+            "Kakek terbang jauh",
+            "Lambaikan sapu tangan merah putih"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": ["Sampai jumpa kembali", "Sampai jumpa kembali"]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Kakek terbang jauh",
+            "Lambaikan sapu tangan merah putih",
+            "Kakek terbang jauh",
+            "Lambaikan sapu tangan merah putih"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "E Mambo Simbo",
+      "artist": null,
+      "composer": "Masyarakat Sentani",
+      "audioUrl": "https://dash.kastauterjemahan.web.id/media/music/01-saumabu-bahasa-tepra.mp3",
+      "description": "Lagu daerah dari Sentani, Papua yang menceritakan tentang kehidupan di danau Sentani",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": ["E mambo simbo", "Simbo e mambo", "E mambo simbo", "Simbo e mambo"]
+        },
+        {
+          "type": "chorus",
+          "content": ["Oi oi oi oi", "Oi oi oi oi", "Oi oi oi oi", "Oi oi oi oi"]
+        },
+        {
+          "type": "verse",
+          "content": ["E mambo simbo", "Simbo e mambo", "E mambo simbo", "Simbo e mambo"]
+        }
+      ],
+      "translation": [
+        {
+          "type": "verse",
+          "content": ["Wahai kekasihku", "Kekasihku wahai", "Wahai kekasihku", "Kekasihku wahai"]
+        },
+        {
+          "type": "chorus",
+          "content": ["Oi oi oi oi", "Oi oi oi oi", "Oi oi oi oi", "Oi oi oi oi"]
+        },
+        {
+          "type": "verse",
+          "content": ["Wahai kekasihku", "Kekasihku wahai", "Wahai kekasihku", "Kekasihku wahai"]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Sajojo",
+      "artist": "Lagu Daerah",
+      "composer": "Tradisional",
+      "audioUrl": "https://dash.kastauterjemahan.web.id/media/music/01-saumabu-bahasa-tepra.mp3",
+      "description": "Lagu daerah Papua yang populer dan sering digunakan untuk mengiringi tarian",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": ["Sajojo... Sajojo...", "Sajojo sana e", "Sajojo... Sajojo...", "Sajojo sana e"]
+        },
+        {
+          "type": "chorus",
+          "content": ["Sana e sana e sana e sana e", "Sajojo sana e", "Sana e sana e sana e sana e", "Sajojo sana e"]
+        },
+        {
+          "type": "verse",
+          "content": ["Sajojo... Sajojo...", "Sajojo sana e", "Sajojo... Sajojo...", "Sajojo sana e"]
+        }
+      ],
+      "translation": [
+        {
+          "type": "verse",
+          "content": ["Sajojo... Sajojo...", "Sajojo mari kita", "Sajojo... Sajojo...", "Sajojo mari kita"]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Mari kita, mari kita, mari kita, mari kita",
+            "Sajojo mari kita",
+            "Mari kita, mari kita, mari kita, mari kita",
+            "Sajojo mari kita"
+          ]
+        },
+        {
+          "type": "verse",
+          "content": ["Sajojo... Sajojo...", "Sajojo mari kita", "Sajojo... Sajojo...", "Sajojo mari kita"]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Panggil Panggil Nama Saya",
+      "artist": "Lagu Daerah",
+      "composer": "Tradisional",
+      "audioUrl": "https://dash.kastauterjemahan.web.id/media/music/01-saumabu-bahasa-tepra.mp3",
+      "description": "Lagu daerah Papua yang ceria dan sering dinyanyikan dalam acara-acara kebersamaan",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Panggil panggil nama saya",
+            "Panggil saya pung nama",
+            "Panggil panggil nama saya",
+            "Panggil saya pung nama"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": ["Nama saya Wati e", "Nama saya Wati", "Nama saya Wati e", "Nama saya Wati"]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Panggil panggil nama saya",
+            "Panggil saya pung nama",
+            "Panggil panggil nama saya",
+            "Panggil saya pung nama"
+          ]
+        }
+      ],
+      "translation": [
+        {
+          "type": "verse",
+          "content": [
+            "Panggil panggil nama saya",
+            "Panggil nama saya",
+            "Panggil panggil nama saya",
+            "Panggil nama saya"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": ["Nama saya Wati", "Nama saya Wati", "Nama saya Wati", "Nama saya Wati"]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Panggil panggil nama saya",
+            "Panggil nama saya",
+            "Panggil panggil nama saya",
+            "Panggil nama saya"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Aku Papua",
+      "artist": "Black Brothers",
+      "composer": "Edo Kondologit",
+      "audioUrl": "https://dash.kastauterjemahan.web.id/media/music/01-saumabu-bahasa-tepra.mp3",
+      "description": "Lagu populer yang menceritakan identitas dan kebanggaan sebagai orang Papua",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia"
+          ]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia",
+            "Aku Papua, aku Melanesia"
+          ]
+        }
+      ],
+      "translation": null
+    }
+  ]
+}
+

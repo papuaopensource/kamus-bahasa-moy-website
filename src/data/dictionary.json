@@ -1,0 +1,478 @@
+[
+  {
+    "id": 1,
+    "text": "aba",
+    "pronunciation": "aba",
+    "meanings": [{ "id": 1, "name": "bete" }, { "id": 2, "name": "talas" }],
+    "definition": "Tanaman umbi-umbian sejenis talas yang dapat dimakan dan biasanya dibakar",
+    "example_original": "nja aba dun trung",
+    "example_translation": "ibu membakar bete",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [15, 21, 22, 23]
+  },
+  {
+    "id": 2,
+    "text": "abletsing",
+    "pronunciation": "abletsiŋ",
+    "meanings": [{ "id": 1, "name": "terbalik" }],
+    "definition": "Posisi yang tidak normal dimana bagian atas berada di bawah atau sebaliknya",
+    "example_original": "nemot amblemba king on abletsing",
+    "example_translation": "dia memakai baju terbalik",
+    "word_class_id": {
+      "id": 1,
+      "name": "adjektiva",
+      "abbreviation": "a"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [16, 25]
+  },
+  {
+    "id": 3,
+    "text": "abusi",
+    "pronunciation": "abusi",
+    "meanings": [{ "id": 1, "name": "kakek" }],
+    "definition": "Ayah dari ayah atau ibu seseorang; orang tua laki-laki yang sudah tua",
+    "example_original": "kandei abusi mse ket ong",
+    "example_translation": "kakek saya masih hidup",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [8, 9, 4, 5]
+  },
+  {
+    "id": 4,
+    "text": "agha",
+    "pronunciation": "aXa",
+    "meanings": [{ "id": 1, "name": "kakak" }, { "id": 2, "name": "abang" }],
+    "definition": "Saudara yang lebih tua, khususnya saudara laki-laki",
+    "example_original": "nggo syoli kandei agha",
+    "example_translation": "orang itu itu kakak saya",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [5, 9, 3, 8]
+  },
+  {
+    "id": 5,
+    "text": "agha kambung",
+    "pronunciation": "aXa kambunŋ",
+    "meanings": [{ "id": 1, "name": "kakak perempuan" }],
+    "definition": "Saudara perempuan yang lebih tua",
+    "example_original": "kandei agha kambung syoli mbei ati awum",
+    "example_translation": "kakak perempuan saya sudah menikah",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [4, 9, 3, 8]
+  },
+  {
+    "id": 6,
+    "text": "agrog-agrog",
+    "pronunciation": "agrɔg-agrɔg",
+    "meanings": [{ "id": 1, "name": "putar" }, { "id": 2, "name": "memutari" }],
+    "definition": "Gerakan melingkar mengelilingi suatu objek",
+    "example_original": "nemot dewu yap kanding agrog-agrog",
+    "example_translation": "mereka memutari gereja",
+    "word_class_id": {
+      "id": 7,
+      "name": "verba",
+      "abbreviation": "v"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [7]
+  },
+  {
+    "id": 7,
+    "text": "agrok amtung",
+    "pronunciation": "agrɔk amtuŋ",
+    "meanings": [{ "id": 1, "name": "pusing" }],
+    "definition": "Kondisi dimana kepala terasa berputar atau tidak normal",
+    "example_original": "kat yegembu agrok amtung",
+    "example_translation": "kepalaku terasa pusing",
+    "word_class_id": {
+      "id": 1,
+      "name": "adjektiva",
+      "abbreviation": "a"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [6]
+  },
+  {
+    "id": 8,
+    "text": "ai",
+    "pronunciation": "ayi",
+    "meanings": [{ "id": 1, "name": "bapak" }],
+    "definition": "Orang tua laki-laki; ayah dari seseorang",
+    "example_original": "kat ai nmo su Markus",
+    "example_translation": "nama bapak saya Markus",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [3, 4, 5, 9]
+  },
+  {
+    "id": 9,
+    "text": "ainemong daten",
+    "pronunciation": "ayinəmɔŋ daten",
+    "meanings": [{ "id": 1, "name": "adik laki-laki" }],
+    "definition": "Saudara laki-laki yang lebih muda",
+    "example_original": "ainemong daten warmi pung arang",
+    "example_translation": "adik laki-laki ayah besok datang",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [4, 5, 8, 3]
+  },
+  {
+    "id": 10,
+    "text": "alei",
+    "pronunciation": "aLəy",
+    "meanings": [{ "id": 1, "name": "akal" }, { "id": 2, "name": "pikiran" }],
+    "definition": "Kemampuan berpikir dan bernalar yang dimiliki manusia",
+    "example_original": "snou nak nmon alei",
+    "example_translation": "manusia mempunyai akal",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [11, 12, 13]
+  },
+  {
+    "id": 11,
+    "text": "alei alaptung",
+    "pronunciation": "aLəy alaptuŋ",
+    "meanings": [{ "id": 1, "name": "angan-angan" }, { "id": 2, "name": "cita-cita" }],
+    "definition": "Keinginan atau harapan yang ingin dicapai di masa depan",
+    "example_original": "kanei alei alaptung guru se ablei aru",
+    "example_translation": "cita-cita adik menjadi guru",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [10, 12, 13]
+  },
+  {
+    "id": 12,
+    "text": "alei dungdung",
+    "pronunciation": "aLəy duŋduŋ",
+    "meanings": [{ "id": 1, "name": "anggapan" }],
+    "definition": "Pemikiran atau pendapat seseorang tentang sesuatu",
+    "example_original": "alei dungdung nggo ale kba sumbui",
+    "example_translation": "anggapan itu tidak masuk akal",
+    "word_class_id": {
+      "id": 7,
+      "name": "verba",
+      "abbreviation": "v"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [10, 11, 13]
+  },
+  {
+    "id": 13,
+    "text": "aleikba",
+    "pronunciation": "aleykba",
+    "meanings": [{ "id": 1, "name": "bodoh" }],
+    "definition": "Kondisi kekurangan dalam kemampuan berpikir atau bernalar",
+    "example_original": "nggo donak aleikba",
+    "example_translation": "anak itu bodoh",
+    "word_class_id": {
+      "id": 1,
+      "name": "adjektiva",
+      "abbreviation": "a"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [10, 11, 12]
+  },
+  {
+    "id": 14,
+    "text": "alem",
+    "pronunciation": "aLem",
+    "meanings": [{ "id": 1, "name": "tanjung" }],
+    "definition": "Bagian daratan yang menjorok ke laut",
+    "example_original": "nemot alem bro se manei kasim nemtong",
+    "example_translation": "mereka mencari ikan di tanjung",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [24]
+  },
+  {
+    "id": 15,
+    "text": "alen",
+    "pronunciation": "aLən",
+    "meanings": [{ "id": 1, "name": "bambu untuk memotong" }],
+    "definition": "Alat dari bambu yang tajam dan digunakan untuk memotong bahan makanan",
+    "example_original": "nja alen de mbiok kendeng tumbu trung",
+    "example_translation": "ibu memotong daging babi dengan bambu",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [1, 23]
+  },
+  {
+    "id": 16,
+    "text": "aleng",
+    "pronunciation": "aLeŋ",
+    "meanings": [{ "id": 1, "name": "bengkok" }, { "id": 2, "name": "miring" }],
+    "definition": "Tidak lurus; condong ke salah satu sisi",
+    "example_original": "nggo kutum aleng atung",
+    "example_translation": "kayu itu bengkok",
+    "word_class_id": {
+      "id": 1,
+      "name": "adjektiva",
+      "abbreviation": "a"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [2]
+  },
+  {
+    "id": 17,
+    "text": "ali¹",
+    "pronunciation": "aLi",
+    "meanings": [{ "id": 1, "name": "berat" }],
+    "definition": "Memiliki bobot yang tidak ringan; sulit untuk diangkat",
+    "example_original": "nje kemba ali nale",
+    "example_translation": "tas ini sangat berat",
+    "word_class_id": {
+      "id": 1,
+      "name": "adjektiva",
+      "abbreviation": "a"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [18]
+  },
+  {
+    "id": 18,
+    "text": "ali²",
+    "pronunciation": "ali",
+    "meanings": [{ "id": 1, "name": "turun" }],
+    "definition": "Bergerak dari tempat yang tinggi ke tempat yang lebih rendah",
+    "example_original": "kame paene ali",
+    "example_translation": "kami turun ke lembah",
+    "word_class_id": {
+      "id": 7,
+      "name": "verba",
+      "abbreviation": "v"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [17]
+  },
+  {
+    "id": 19,
+    "text": "alisong",
+    "pronunciation": "alisɔŋ",
+    "meanings": [{ "id": 1, "name": "parah" }],
+    "definition": "Kondisi yang sangat buruk atau serius",
+    "example_original": "abu nemong ko sandu alisong",
+    "example_translation": "penyakit kakek semakin parah",
+    "word_class_id": {
+      "id": 1,
+      "name": "adjektiva",
+      "abbreviation": "a"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": []
+  },
+  {
+    "id": 20,
+    "text": "alo",
+    "pronunciation": "aLɔ",
+    "meanings": [{ "id": 1, "name": "bicara" }],
+    "definition": "Kegiatan berkomunikasi dengan menggunakan kata-kata",
+    "example_original": "nggo donak nembut alo boi snong",
+    "example_translation": "anak itu sudah bisa berbicara",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": []
+  },
+  {
+    "id": 21,
+    "text": "alu",
+    "pronunciation": "aLu",
+    "meanings": [{ "id": 1, "name": "sukun" }],
+    "definition": "Buah dari pohon sukun yang dapat dimakan",
+    "example_original": "alu nje kitpara bei bungtung",
+    "example_translation": "buah sukun ini sudah tua",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [22, 1, 23]
+  },
+  {
+    "id": 22,
+    "text": "aludi",
+    "pronunciation": "aLudi",
+    "meanings": [{ "id": 1, "name": "pohon sukun" }],
+    "definition": "Pohon yang menghasilkan buah sukun",
+    "example_original": "aludi walangsong",
+    "example_translation": "pohon sukun itu sangat tinggi",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [21, 1, 23]
+  },
+  {
+    "id": 23,
+    "text": "alum",
+    "pronunciation": "aLum",
+    "meanings": [{ "id": 1, "name": "sayur" }],
+    "definition": "Tanaman atau bagian tanaman yang dapat dimakan",
+    "example_original": "nja alum asusrik kak tung",
+    "example_translation": "ibu mengambil sayur di kebun",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [1, 15, 21, 22]
+  },
+  {
+    "id": 24,
+    "text": "alung",
+    "pronunciation": "aLuŋ",
+    "meanings": [{ "id": 1, "name": "arus" }],
+    "definition": "Aliran air yang mengalir dengan kecepatan tertentu",
+    "example_original": "bu alung nggo katuei",
+    "example_translation": "arus sungai itu deras",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [14]
+  },
+  {
+    "id": 25,
+    "text": "amblemva",
+    "pronunciation": "ambLƐmβa",
+    "meanings": [{ "id": 1, "name": "baju" }],
+    "definition": "Pakaian yang dikenakan untuk menutupi tubuh bagian atas",
+    "example_original": "nja amblemva nim king tung",
+    "example_translation": "ibu memakai baju baru",
+    "word_class_id": {
+      "id": 2,
+      "name": "nomina",
+      "abbreviation": "n"
+    },
+    "language_id": {
+      "id": 2,
+      "name": "moy"
+    },
+    "related_words": [2]
+  }
+]
+
