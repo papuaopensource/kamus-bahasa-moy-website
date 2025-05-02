@@ -3,10 +3,8 @@
     {
       "id": 4,
       "title": "Nja Kleb-kleb Nale",
-      "artist": null,
       "composer": null,
-      "audioUrl": null,
-      "description": "...",
+      "description": "Lagu untuk seorang Ibu yang telah menjaga dan membesarkan kita",
       "lyrics": [
         {
           "type": "verse",
@@ -37,9 +35,7 @@
     {
       "id": 3,
       "title": "Aiwary Kame Tamlak Daleye",
-      "artist": null,
       "composer": null,
-      "audioUrl": null,
       "description": "Lagu rohani yang menyatakan pengharapan dan kasih kepada Yesus",
       "lyrics": [
         {
@@ -71,9 +67,7 @@
     {
       "id": 2,
       "title": "Oh Yerusalem Wary ksop",
-      "artist": null,
       "composer": null,
-      "audioUrl": null,
       "description": "Lagu rohani yang menggambarkan keindahan dan harapan dalam Yerusalem",
       "lyrics": [
         {
@@ -111,9 +105,7 @@
     {
       "id": 1,
       "title": "Yesus Ngut Beibi Song Daytong",
-      "artist": null,
       "composer": null,
-      "audioUrl": null,
       "description": "Lagu rohani yang memuji kebesaran Yesus dan cinta-Nya kepada umat manusia",
       "lyrics": [
         {
