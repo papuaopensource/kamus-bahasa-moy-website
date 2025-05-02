@@ -360,8 +360,8 @@ export default function KamusApp() {
               <div className="relative">
                 <Textarea
                   ref={inputRef}
-                  placeholder="Masukan teks"
-                  className="min-h-[200px] resize-none p-4 rounded-md border focus-visible:ring-1 focus-visible:ring-primary"
+                  placeholder="Masukan kosa kata..."
+                  className="bg-white min-h-[200px] resize-none p-4 rounded-md border focus-visible:ring-1 focus-visible:ring-primary"
                   value={inputText}
                   onChange={(e) => {
                     setInputText(e.target.value)
