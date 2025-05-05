@@ -109,7 +109,7 @@ export default function LirikLaguPage() {
       <div className="grid gap-6">
         <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold tracking-tight">Lirik Lagu Bahasa Moy</h1>
+            <h1 className="text-2xl font-bold tracking-tight">Lirik Lagu Bahasa Moy</h1>
             <p className="text-muted-foreground">Jelajahi kumpulan lirik lagu daerah dalam bahasa Moy</p>
           </div>
 
