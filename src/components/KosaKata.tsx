@@ -338,7 +338,7 @@ export default function KosaKataPage() {
                                   </Badge>
                                 </div>
                               </div>
-                              <DialogDescription className="text-base font-medium mt-1">
+                              <DialogDescription className="text-base font-medium mt-1 text-left">
                                 {getMeaningsAsString(word.meanings)}
                               </DialogDescription>
                             </DialogHeader>
