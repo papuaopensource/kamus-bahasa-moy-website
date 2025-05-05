@@ -2,9 +2,10 @@
 interface Props {
   title: string;
   description: string;
+  image?: string;
 }
 
-const { title, description } = Astro.props as Props;
+const { title, description, image = "/preview.png" } = Astro.props;
 ---
 
 <meta charset="utf-8" />
@@ -25,6 +26,22 @@ const { title, description } = Astro.props as Props;
 <meta name="apple-mobile-web-app-title" content="Kamus Bahasa Moy" />
 <link rel="manifest" href="/favicon/site.webmanifest" />
 <meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{title} — Kamus Bahasa Moy</title>
+<meta name="title" content={`${title} — Kamus Bahasa Moy`} />
 <meta name="description" content={description} />
-<meta name="author" content="Papua Open Source" />
-<title>{title} | Kamus Bahasa Moy</title>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={`${title} — Kamus Bahasa Moy`} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={`${title} — Kamus Bahasa Moy`} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
