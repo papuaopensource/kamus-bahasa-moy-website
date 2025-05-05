@@ -3,7 +3,7 @@
     {
       "id": 4,
       "title": "Nja Kleb-kleb Nale",
-      "composer": null,
+      "composer": "Alm. Yoel Banosro",
       "description": "Lagu untuk seorang Ibu yang telah menjaga dan membesarkan kita",
       "lyrics": [
         {
@@ -11,26 +11,32 @@
           "content": [
             "Nja kleb-kleb nare",
             "Nja nmon-nmon nare",
-            "Boi ta bu male kmuk apdetrung"
+            "Boi ta bu male kmuk apdetrung",
+            "Nande dore mia",
+            "Nja ne polomdang",
+            "Nja le kenbu syop amdetrang"
           ]
         },
         {
           "type": "chorus",
           "content": [
-            "Oh.. a.. Yesus",
-            "Kameng nmbut pu yamtru",
-            "Nje wary yap ma sri"
+            "Nja reklum matse",
+            "Piam kpa smu daitung",
+            "Nak tmeisri met nje",
+            "biaong..."
           ]
         },
         {
           "type": "verse",
           "content": [
-            "Kmong kama alei ngakbalei kameng",
-            "Nmbut tup de"
+            "Nja asu tap de",
+            "Nja kei kmuk tap de",
+            "Met arai dung se masi blone",
+            "Mere klum parim",
+            "Nja ne sengga smia ati amdang"
           ]
         }
-      ],
-      "translation": null
+      ]
     },
     {
       "id": 3,
@@ -61,8 +67,7 @@
             "Nmbut tup de"
           ]
         }
-      ],
-      "translation": null
+      ]
     },
     {
       "id": 2,
@@ -82,22 +87,6 @@
           "content": [
             "Warangkbadari Aiwary pungarang",
             "Met nengrei-nengrei katdangse"
-          ]
-        }
-      ],
-      "translation": [
-        {
-          "type": "verse",
-          "content": [
-            "Oh Yerusalem kota mulia",
-            "Hatiku rindu ke sana"
-          ]
-        },
-        {
-          "type": "chorus",
-          "content": [
-            "Tak lama lagi Tuhanku datanglah",
-            "Bawa saya masuk sana"
           ]
         }
       ]
@@ -128,8 +117,7 @@
             "Syolinak syolinak dunya paine"
           ]
         }
-      ],
-      "translation": null
+      ]
     }
   ]
 }
