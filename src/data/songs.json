@@ -1,6 +1,95 @@
 {
   "songs": [
     {
+      "id": 14,
+      "title": "Baid Nesipne Nemong Arwei Arung",
+      "composer": null,
+      "description": "Deskripsi mengenai lagu ini akan ditambahkan segera.",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Baid nesipne nemong arwei arung",
+            "Kei nansing nansing song dambu tai song se",
+            "Masi tap kba pung saong"
+          ]
+        },
+        {
+          "type": "verse",
+          "content": [
+            "Uk tase ngone njene kuk daitrung",
+            "Betek maunggetong-maunggetong mise kba pung"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Yesus pot daireye kameng",
+            "Masi tap yoptru arei pegu",
+            "Mase ket daitong arai taop",
+            "Bo ati mare",
+            "Yesus pot daireye kune oine",
+            "Urambu mase snise-snise",
+            "Urambu trak daireye"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Kundei Aiwary Mitne",
+      "composer": null,
+      "description": "Deskripsi mengenai lagu ini akan ditambahkan segera.",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Kandei Aiwary mitne",
+            "Met sancuk taima setrang",
+            "Senggatase met arai kba atrung",
+            "Sri sema nomot krum syori",
+            "Yatap bei tunung dayong",
+            "Mot... kak dengse, dambu karai song"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Kundeiye met sancuk taima setrang",
+            "Aiwary dambu mane kindik dairengse",
+            "Mam wari bung ketong",
+            "Met nenggrei-nenggrei se",
+            "Ohh... Ohh... Ohh... maarik yap dengse",
+            "Ohh... Ohh... Ohh... Aiwary mitne"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Ma Yesus Nemong Yap Mane",
+      "composer": null,
+      "description": "Deskripsi mengenai lagu ini akan ditambahkan segera.",
+      "lyrics": [
+        {
+          "type": "verse",
+          "content": [
+            "Ma Yesus nemong yap mane",
+            "Yesus nemong yap mane",
+            "Ma met kabrai yamse nyatrang"
+          ]
+        },
+        {
+          "type": "chorus",
+          "content": [
+            "Nje dunia karang wabung ee",
+            "Me Yesus ne, Me Yesus ne",
+            "Me Yesus nemong yap mane"
+          ]
+        }
+      ]
+    },
+    {
       "id": 11,
       "title": "Do Syapang Nak",
       "composer": null,
