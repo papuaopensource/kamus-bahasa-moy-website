@@ -3,15 +3,15 @@
 <div align="center">
   <img src="apps/web/src/assets/images/logo-kamus-bahasa-moy.svg" alt="Logo Kamus Bahasa Moy" width="200"/>
   <h3>Website Kamus Digital untuk Pelestarian Bahasa Moy</h3>
-  <p><em>Untuk versi aplikasi mobile, kunjungi <a href="https://github.com/papua-opensource/kamus-bahasa-moy-mobile">repository mobile</a></em></p>
+  <p><em>Untuk versi aplikasi mobile, kunjungi <a href="https://github.com/papuaopensource/kamusbahasamoy-mobile">repository mobile</a></em></p>
 </div>
 
 <div align="center">
 
-[![All Contributors](https://img.shields.io/github/contributors/papua-opensource/kamus-bahasa-moy-website)](https://github.com/papua-opensource/kamus-bahasa-moy-website/graphs/contributors)
-![GitHub last commit](https://img.shields.io/github/last-commit/papua-opensource/kamus-bahasa-moy-website.svg)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/papua-opensource/kamus-bahasa-moy-website)
-[![License](https://img.shields.io/github/license/papua-opensource/kamus-bahasa-moy-website.svg)](LICENSE)
+[![All Contributors](https://img.shields.io/github/contributors/papuaopensource/kamusbahasamoy)](https://github.com/papuaopensource/kamusbahasamoy/graphs/contributors)
+![GitHub last commit](https://img.shields.io/github/last-commit/papuaopensource/kamusbahasamoy.svg)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/papuaopensource/kamusbahasamoy)
+[![License](https://img.shields.io/github/license/papuaopensource/kamusbahasamoy.svg)](LICENSE)
 
 </div>
 
