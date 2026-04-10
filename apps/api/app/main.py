@@ -3,12 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 from dotenv import load_dotenv
 
-from app.database import engine, Base
 from app.routers import dictionary, songs
 
 load_dotenv()
-
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Kamus Bahasa Moy API",

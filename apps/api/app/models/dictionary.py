@@ -33,7 +33,7 @@ class Meaning(Base):
     __tablename__ = "meanings"
 
     id = Column(Integer, primary_key=True)
-    name = Column(String, nullable=False)
+    name = Column(String, nullable=True)
     word_id = Column(Integer, ForeignKey("words.id"), nullable=False)
 
     word = relationship("Word", back_populates="meanings")

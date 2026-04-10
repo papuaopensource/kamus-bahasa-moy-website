@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class MeaningOut(BaseModel):
     id: int
-    name: str
+    name: str | None
 
     model_config = {"from_attributes": True}
 

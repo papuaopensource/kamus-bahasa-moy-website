@@ -12,7 +12,7 @@ def list_words(
     q: str | None = Query(None, description="Cari kata"),
     word_class_id: int | None = Query(None),
     skip: int = Query(0, ge=0),
-    limit: int = Query(20, ge=1, le=100),
+    limit: int = Query(20, ge=1, le=2000),
     db: Session = Depends(get_db),
 ):
     query = db.query(Word)
