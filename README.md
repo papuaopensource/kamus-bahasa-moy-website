@@ -1,7 +1,7 @@
 <h1 align="center">Kamus Bahasa Moy - Website</h1>
 
 <div align="center">
-  <img src="src/assets/images/logo-kamus-bahasa-moy.svg" alt="Logo Kamus Bahasa Moy" width="200"/>
+  <img src="apps/web/src/assets/images/logo-kamus-bahasa-moy.svg" alt="Logo Kamus Bahasa Moy" width="200"/>
   <h3>Website Kamus Digital untuk Pelestarian Bahasa Moy</h3>
   <p><em>🔍 Untuk versi aplikasi mobile, kunjungi <a href="https://github.com/papua-opensource/kamus-bahasa-moy-mobile">repository mobile</a></em></p>
 </div>
@@ -32,51 +32,114 @@ Kamus Bahasa Moy Website adalah platform web yang dikembangkan untuk membantu me
 - **Tampilan Responsif**: Desain yang optimal untuk penggunaan di desktop, tablet, dan smartphone
 - **Mode Gelap/Terang**: Pilihan tampilan sesuai preferensi pengguna
 
+## 🗂️ Struktur Proyek
+
+Proyek ini menggunakan struktur **monorepo** dengan [Turborepo](https://turbo.build/) dan [pnpm workspaces](https://pnpm.io/workspaces).
+
+```
+kamus-bahasa-moy-website/
+├── apps/
+│   ├── web/          # Frontend Astro + React (Cloudflare Pages)
+│   └── api/          # Backend FastAPI + SQLite
+├── turbo.json        # Konfigurasi pipeline Turborepo
+├── pnpm-workspace.yaml
+└── package.json      # Root workspace
+```
+
 ## 🛠️ Teknologi yang Digunakan
 
-- **Framework**: [Astro](https://astro.build/) - Framework web modern dengan pendekatan "Islands Architecture"
-- **Styling**: [TailwindCSS](https://tailwindcss.com/) - Framework CSS utility-first untuk desain yang cepat dan fleksibel
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) - Koleksi komponen UI berkualitas tinggi yang dapat digunakan ulang
+**Frontend** (`apps/web`):
+- **[Astro](https://astro.build/)** — Framework web dengan pendekatan "Islands Architecture"
+- **[React](https://react.dev/)** — Library UI untuk komponen interaktif
+- **[TailwindCSS](https://tailwindcss.com/)** — Framework CSS utility-first
+- **[shadcn/ui](https://ui.shadcn.com/)** — Koleksi komponen UI
+
+**Backend** (`apps/api`):
+- **[FastAPI](https://fastapi.tiangolo.com/)** — Framework API Python yang modern dan cepat
+- **[SQLAlchemy](https://www.sqlalchemy.org/)** — ORM untuk database
+- **[SQLite](https://www.sqlite.org/)** — Database ringan untuk penyimpanan data
+- **[Alembic](https://alembic.sqlalchemy.org/)** — Migrasi database
+
+**Tooling**:
+- **[Turborepo](https://turbo.build/)** — Monorepo build system dengan caching
+- **[pnpm](https://pnpm.io/)** — Package manager untuk Node.js
+- **[uv](https://docs.astral.sh/uv/)** — Package manager untuk Python
 
 ## 🚀 Instalasi dan Penggunaan
 
-1. Clone repositori ini
+### Prasyarat
+
+- [Node.js](https://nodejs.org/) 20 atau lebih baru
+- [pnpm](https://pnpm.io/installation) 10 atau lebih baru
+- [Python](https://www.python.org/) 3.13 atau lebih baru
+- [uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+### Setup
+
+1. Clone repositori
+
    ```bash
    git clone https://github.com/papua-opensource/kamus-bahasa-moy-website.git
-   ```
-
-2. Masuk ke direktori proyek
-   ```bash
    cd kamus-bahasa-moy-website
    ```
 
-3. Instal dependensi
+2. Install semua dependensi (frontend + backend sekaligus)
+
    ```bash
-   npm install
+   pnpm install
    ```
 
-4. Jalankan server pengembangan
+3. Salin file environment
+
    ```bash
-   npm run dev
+   cp apps/api/.env.example apps/api/.env
+   cp apps/web/.env.example apps/web/.env
    ```
 
-5. Buka browser dan akses `http://localhost:4321`
+4. Jalankan migrasi database dan isi data awal
+
+   ```bash
+   cd apps/api
+   uv run alembic upgrade head
+   uv run python scripts/seed.py
+   cd ../..
+   ```
+
+5. Jalankan semua aplikasi sekaligus
+
+   ```bash
+   pnpm dev
+   ```
+
+   - Frontend: `http://localhost:4321`
+   - Backend API: `http://localhost:8000`
+   - Dokumentasi API: `http://localhost:8000/docs`
+
+### Menjalankan satu aplikasi saja
+
+```bash
+# Hanya frontend
+pnpm --filter @kamus-bahasa-moy/web dev
+
+# Hanya backend
+cd apps/api && uv run uvicorn app.main:app --reload --port 8000
+```
 
 ## 📦 Build untuk Produksi
 
 ```bash
-npm run build
+pnpm build
 ```
 
-Hasil build akan tersedia di folder `dist/`
+Hasil build frontend tersedia di `apps/web/dist/`.
 
 ## 🤝 Kontribusi
 
-Kontribusi untuk pengembangan Website Kamus Bahasa Moy sangat diapresiasi. Jika Anda ingin berkontribusi, Silahkan baca panduannya [disini](CONTRIBUTING.md).
+Kontribusi untuk pengembangan Website Kamus Bahasa Moy sangat diapresiasi. Jika Anda ingin berkontribusi, silakan baca panduan lengkapnya di [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah lisensi AGPL-3.0 - lihat file [LICENSE](LICENSE) untuk detailnya.
+Proyek ini dilisensikan di bawah lisensi AGPL-3.0 — lihat file [LICENSE](LICENSE) untuk detailnya.
 
 ## 🙏 Kredit
 
@@ -88,8 +151,6 @@ Proyek ini dilisensikan di bawah lisensi AGPL-3.0 - lihat file [LICENSE](LICENSE
 ## 📖 Sumber Data
 
 Website ini menggunakan data kosakata dan definisi dari **Kamus Dwibahasa Mooi** yang diterbitkan oleh **Balai Bahasa Provinsi Papua**. Kamus tersebut merupakan sumber otoritatif untuk bahasa Moy/Mooi dan telah disusun melalui penelitian bahasa yang ekstensif oleh ahli linguistik dari Balai Bahasa.
-
-Penggunaan data dari sumber resmi ini memastikan bahwa pengguna mendapatkan informasi bahasa yang akurat dan otentik, sejalan dengan upaya pelestarian bahasa daerah di Papua.
 
 ## 🔄 Adaptasi untuk Bahasa Daerah Lain
 
