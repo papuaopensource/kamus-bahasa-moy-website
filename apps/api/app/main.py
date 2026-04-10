@@ -1,14 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import os
 from dotenv import load_dotenv
 
-from app.database import engine, Base
 from app.routers import dictionary, songs
 
 load_dotenv()
-
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Kamus Bahasa Moy API",
@@ -16,12 +12,9 @@ app = FastAPI(
     version="0.1.0",
 )
 
-CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:4321").split(",")
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=CORS_ORIGINS,
-    allow_credentials=True,
+    allow_origins=["*"],
     allow_methods=["GET"],
     allow_headers=["*"],
 )
