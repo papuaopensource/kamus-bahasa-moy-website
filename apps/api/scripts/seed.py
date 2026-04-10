@@ -22,10 +22,10 @@ from app.models.dictionary import Language, WordClass, Word, Meaning, word_relat
 from app.models.song import Song, Verse
 
 BASE_DIR = Path(__file__).parent.parent
-WEB_DATA_DIR = BASE_DIR.parent / "web" / "src" / "data"
+DATA_DIR = BASE_DIR / "data"
 
-DICTIONARY_PATH = WEB_DATA_DIR / "dictionary.json"
-SONGS_PATH = WEB_DATA_DIR / "songs.json"
+DICTIONARY_PATH = DATA_DIR / "dictionary.json"
+SONGS_PATH = DATA_DIR / "songs.json"
 
 
 def seed():
