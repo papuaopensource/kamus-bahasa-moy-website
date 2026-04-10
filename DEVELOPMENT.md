@@ -5,7 +5,7 @@
 Proyek ini menggunakan struktur monorepo dengan [Turborepo](https://turbo.build/) dan [pnpm workspaces](https://pnpm.io/workspaces).
 
 ```
-kamus-bahasa-moy-website/
+kamusbahasamoy/
 ├── apps/
 │   ├── web/          # Frontend Astro + React (Cloudflare Pages)
 │   └── api/          # Backend FastAPI + SQLite
@@ -26,8 +26,8 @@ kamus-bahasa-moy-website/
 1. Clone repositori:
 
    ```bash
-   git clone https://github.com/papua-opensource/kamus-bahasa-moy-website.git
-   cd kamus-bahasa-moy-website
+   git clone https://github.com/papuaopensource/kamusbahasamoy.git
+   cd kamusbahasamoy
    ```
 
 2. Install semua dependensi:
@@ -66,7 +66,7 @@ kamus-bahasa-moy-website/
 
 ```bash
 # Hanya frontend
-pnpm --filter @kamus-bahasa-moy/web dev
+pnpm --filter @kamusbahasamoy/web dev
 
 # Hanya backend
 cd apps/api && uv run uvicorn app.main:app --reload --port 8000
@@ -99,7 +99,7 @@ uv run alembic downgrade -1
 
 ```bash
 # Tambah dependensi ke package tertentu
-pnpm --filter @kamus-bahasa-moy/web add <package>
+pnpm --filter @kamusbahasamoy/web add <package>
 
 # Tambah dependensi Python ke backend
 cd apps/api && uv add <package>
