@@ -1,5 +1,5 @@
 {
-  "name": "kamus-bahasa-moy",
+  "name": "kamusbahasamoy",
   "private": true,
   "scripts": {
     "dev": "turbo dev",
