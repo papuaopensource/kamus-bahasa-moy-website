@@ -1,9 +1,9 @@
 <h1 align="center">Kamus Bahasa Moy - Website</h1>
 
 <div align="center">
-  <img src="src/assets/images/logo-kamus-bahasa-moy.svg" alt="Logo Kamus Bahasa Moy" width="200"/>
+  <img src="apps/web/src/assets/images/logo-kamus-bahasa-moy.svg" alt="Logo Kamus Bahasa Moy" width="200"/>
   <h3>Website Kamus Digital untuk Pelestarian Bahasa Moy</h3>
-  <p><em>🔍 Untuk versi aplikasi mobile, kunjungi <a href="https://github.com/papua-opensource/kamus-bahasa-moy-mobile">repository mobile</a></em></p>
+  <p><em>Untuk versi aplikasi mobile, kunjungi <a href="https://github.com/papua-opensource/kamus-bahasa-moy-mobile">repository mobile</a></em></p>
 </div>
 
 <div align="center">
@@ -15,13 +15,13 @@
 
 </div>
 
-## 📝 Deskripsi
+## Deskripsi
 
 Kamus Bahasa Moy Website adalah platform web yang dikembangkan untuk membantu melestarikan dan mempromosikan bahasa Moy dari Jayapura, Papua. Website ini menyediakan kosakata bahasa Moy beserta terjemahan, pengucapan, dan contoh penggunaan dalam kalimat. Dengan antarmuka yang modern dan responsif, website ini memudahkan pengguna untuk mempelajari dan mengapresiasi bahasa Moy melalui berbagai perangkat.
 
 **Data bahasa dalam website ini diambil dari Kamus Dwibahasa Mooi yang dibuat oleh Balai Bahasa Provinsi Papua**, sehingga menjamin keakuratan dan keaslian konten bahasa yang disajikan.
 
-## ✨ Fitur Utama
+## Fitur Utama
 
 - **Kamus Komprehensif**: Berisi lebih dari 1.000+ kata bahasa Moy dengan arti, pengucapan, dan kelas kata
 - **Pencarian Cepat**: Cari kata dengan mudah menggunakan fitur pencarian realtime
@@ -32,66 +32,38 @@ Kamus Bahasa Moy Website adalah platform web yang dikembangkan untuk membantu me
 - **Tampilan Responsif**: Desain yang optimal untuk penggunaan di desktop, tablet, dan smartphone
 - **Mode Gelap/Terang**: Pilihan tampilan sesuai preferensi pengguna
 
-## 🛠️ Teknologi yang Digunakan
+## Teknologi
 
-- **Framework**: [Astro](https://astro.build/) - Framework web modern dengan pendekatan "Islands Architecture"
-- **Styling**: [TailwindCSS](https://tailwindcss.com/) - Framework CSS utility-first untuk desain yang cepat dan fleksibel
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) - Koleksi komponen UI berkualitas tinggi yang dapat digunakan ulang
+Proyek ini menggunakan struktur monorepo dengan [Turborepo](https://turbo.build/) dan [pnpm workspaces](https://pnpm.io/workspaces).
 
-## 🚀 Instalasi dan Penggunaan
+**Frontend** (`apps/web`): [Astro](https://astro.build/), [React](https://react.dev/), [TailwindCSS](https://tailwindcss.com/), [shadcn/ui](https://ui.shadcn.com/)
 
-1. Clone repositori ini
-   ```bash
-   git clone https://github.com/papua-opensource/kamus-bahasa-moy-website.git
-   ```
+**Backend** (`apps/api`): [FastAPI](https://fastapi.tiangolo.com/), [SQLAlchemy](https://www.sqlalchemy.org/), [SQLite](https://www.sqlite.org/), [Alembic](https://alembic.sqlalchemy.org/)
 
-2. Masuk ke direktori proyek
-   ```bash
-   cd kamus-bahasa-moy-website
-   ```
+**Tooling**: [Turborepo](https://turbo.build/), [pnpm](https://pnpm.io/), [uv](https://docs.astral.sh/uv/)
 
-3. Instal dependensi
-   ```bash
-   npm install
-   ```
+Untuk panduan setup dan pengembangan lokal, lihat [DEVELOPMENT.md](DEVELOPMENT.md).
 
-4. Jalankan server pengembangan
-   ```bash
-   npm run dev
-   ```
+## Kontribusi
 
-5. Buka browser dan akses `http://localhost:4321`
+Kontribusi untuk pengembangan Website Kamus Bahasa Moy sangat diapresiasi. Silakan baca panduan lengkapnya di [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## 📦 Build untuk Produksi
+## Lisensi
 
-```bash
-npm run build
-```
+Proyek ini dilisensikan di bawah lisensi AGPL-3.0 — lihat file [LICENSE](LICENSE) untuk detailnya.
 
-Hasil build akan tersedia di folder `dist/`
-
-## 🤝 Kontribusi
-
-Kontribusi untuk pengembangan Website Kamus Bahasa Moy sangat diapresiasi. Jika Anda ingin berkontribusi, Silahkan baca panduannya [disini](CONTRIBUTING.md).
-
-## 📄 Lisensi
-
-Proyek ini dilisensikan di bawah lisensi AGPL-3.0 - lihat file [LICENSE](LICENSE) untuk detailnya.
-
-## 🙏 Kredit
+## Kredit
 
 - Dikembangkan oleh Papua Open Source
 - UI/UX Design oleh Tim Papua Open Source, dengan beberapa aset visual lainnya yang berasal dari berbagai sumber
 - Logo dibuat menggunakan Grok AI
 - Data kosakata berasal dari Kamus Dwibahasa Mooi yang disusun oleh Balai Bahasa Provinsi Papua
 
-## 📖 Sumber Data
+## Sumber Data
 
 Website ini menggunakan data kosakata dan definisi dari **Kamus Dwibahasa Mooi** yang diterbitkan oleh **Balai Bahasa Provinsi Papua**. Kamus tersebut merupakan sumber otoritatif untuk bahasa Moy/Mooi dan telah disusun melalui penelitian bahasa yang ekstensif oleh ahli linguistik dari Balai Bahasa.
 
-Penggunaan data dari sumber resmi ini memastikan bahwa pengguna mendapatkan informasi bahasa yang akurat dan otentik, sejalan dengan upaya pelestarian bahasa daerah di Papua.
-
-## 🔄 Adaptasi untuk Bahasa Daerah Lain
+## Adaptasi untuk Bahasa Daerah Lain
 
 Kode sumber Website Kamus Bahasa Moy dapat Anda gunakan untuk membuat website kamus untuk bahasa daerah lainnya di Indonesia atau di seluruh dunia. Kami mendorong upaya pelestarian bahasa daerah melalui teknologi dan dengan senang hati menyediakan codebase ini sebagai dasar pengembangan aplikasi serupa.
 
@@ -99,8 +71,7 @@ Dalam mengadaptasi kode sumber ini, Anda wajib:
 - Tetap mencantumkan atribusi kepada Papua Open Source sebagai pengembang awal
 - Mematuhi ketentuan lisensi AGPL-3.0, termasuk menjaga kode sumber tetap terbuka untuk umum
 
-## 📬 Kontak
+## Kontak
 
-Untuk pertanyaan atau masukan, silakan hubungi kami di:
 - Email: contact@papuaopensource.org
 - Website: www.papuaopensource.org
