@@ -6,6 +6,9 @@
     "build": "turbo build",
     "preview": "turbo preview",
     "lint": "turbo lint",
+    "lint:fix": "turbo lint -- --fix",
+    "format": "turbo format",
+    "check:all": "pnpm lint && pnpm format",
     "docker:up": "docker compose up -d --build",
     "docker:down": "docker compose down",
     "docker:migration": "pnpm --filter @kamus-bahasa-moy/api docker:migration",
@@ -16,10 +19,16 @@
     "docker:clean": "pnpm --filter @kamus-bahasa-moy/api docker:clean"
   },
   "devDependencies": {
+    "prettier": "^3.8.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "turbo": "^2.5.3"
   },
   "packageManager": "pnpm@10.20.0",
   "pnpm": {
-    "onlyBuiltDependencies": ["esbuild", "sharp"]
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }
