@@ -16,10 +16,8 @@ services:
       - "4321:4321"
     volumes:
       - .:/app
-      - /app/node_modules
-      - /app/apps/web/node_modules
     # Enable hot reload
-    command: pnpm --filter @kamus-bahasa-moy/web dev --host
+    command: pnpm --filter @kamusbahasamoy/web dev --host --port 4321
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4321/"]
       interval: 30s
@@ -49,11 +47,10 @@ services:
       - "8000:8000"
     volumes:
       - ./apps/api:/app
-      - /app/.venv
     # Enable hot reload
     command: uv run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 5

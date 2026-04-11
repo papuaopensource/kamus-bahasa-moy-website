@@ -17,9 +17,9 @@
     "docker:migration": "pnpm --filter @kamusbahasamoy/api docker:migration",
     "docker:seed": "pnpm --filter @kamusbahasamoy/api docker:seed",
     "db:exec": "pnpm --filter @kamusbahasamoy/api db:exec",
-    "docker:rm": "pnpm --filter @kamusbahasamoy/api docker:rm",
+    "docker:rm": "docker compose down",
     "docker:init": "pnpm --filter @kamusbahasamoy/api docker:init",
-    "docker:clean": "pnpm --filter @kamusbahasamoy/api docker:clean"
+    "docker:clean": "docker compose down -v"
   },
   "devDependencies": {
     "prettier": "^3.8.2",
