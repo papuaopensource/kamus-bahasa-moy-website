@@ -68,6 +68,7 @@ Website ini menggunakan data kosakata dan definisi dari **Kamus Dwibahasa Mooi**
 Kode sumber Website Kamus Bahasa Moy dapat Anda gunakan untuk membuat website kamus untuk bahasa daerah lainnya di Indonesia atau di seluruh dunia. Kami mendorong upaya pelestarian bahasa daerah melalui teknologi dan dengan senang hati menyediakan codebase ini sebagai dasar pengembangan aplikasi serupa.
 
 Dalam mengadaptasi kode sumber ini, Anda wajib:
+
 - Tetap mencantumkan atribusi kepada Papua Open Source sebagai pengembang awal
 - Mematuhi ketentuan lisensi AGPL-3.0, termasuk menjaga kode sumber tetap terbuka untuk umum
 

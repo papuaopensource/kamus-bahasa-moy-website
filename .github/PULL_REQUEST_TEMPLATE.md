@@ -1,6 +1,6 @@
 # 📝 Deskripsi
 
-<!-- 
+<!--
 Berikan deskripsi singkat tentang perubahan yang kamu buat.
 Jelaskan mengapa perubahan ini perlu dilakukan.
 -->
@@ -16,25 +16,25 @@ Jelaskan mengapa perubahan ini perlu dilakukan.
 - [ ] ♻️ Refactoring Kode
 - [ ] 📝 Perbaikan Dokumentasi
 - [ ] 🌐 Terjemahan
-- [ ] 🧹 Lainnya (jelaskan): 
+- [ ] 🧹 Lainnya (jelaskan):
 
 ## 🔗 Terkait Issue
 
-<!-- 
+<!--
 Jika PR ini terkait dengan issue, sebutkan nomor issue tersebut.
 Contoh: Fixes #123 atau Closes #456
 -->
 
 ## 🧪 Pengujian
 
-<!-- 
+<!--
 Jelaskan bagaimana kamu telah menguji perubahan ini.
 Berikan langkah-langkah yang perlu dilakukan untuk menguji perubahan ini.
 -->
 
 ## 📸 Screenshot
 
-<!-- 
+<!--
 Jika perubahan kamu mempengaruhi tampilan UI, lampirkan screenshot sebelum dan sesudah perubahan.
 Ini akan membantu reviewer memahami perubahan yang kamu buat.
 -->
@@ -51,7 +51,7 @@ Ini akan membantu reviewer memahami perubahan yang kamu buat.
 
 ## 📝 Catatan Tambahan
 
-<!-- 
+<!--
 Informasi tambahan yang mungkin perlu diketahui reviewer.
 Misalnya, tantangan yang dihadapi, alternatif yang dipertimbangkan, atau keputusan desain.
 -->

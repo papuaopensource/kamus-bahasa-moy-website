@@ -6,6 +6,7 @@
     "build": "turbo build",
     "preview": "turbo preview",
     "pre-commit:install": "cd apps/api && uv run pre-commit install --install-hooks -c ../../.pre-commit-config.yaml",
+    "pre-commit": "cd apps/api && uv run pre-commit run --all-files -c ../../.pre-commit-config.yaml",
     "lint": "turbo lint",
     "lint:fix": "turbo lint -- --fix",
     "format": "turbo format",

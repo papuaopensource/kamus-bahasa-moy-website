@@ -130,15 +130,15 @@ Gunakan format berikut untuk pesan commit:
 
 Tipe yang tersedia:
 
-| Tipe       | Digunakan untuk                                      |
-|------------|------------------------------------------------------|
-| `feat`     | Fitur baru                                           |
-| `fix`      | Perbaikan bug                                        |
-| `docs`     | Perubahan dokumentasi                                |
-| `refactor` | Refaktor kode tanpa perubahan fungsionalitas         |
-| `style`    | Perubahan tampilan/CSS tanpa perubahan logika        |
-| `test`     | Menambah atau memperbaiki pengujian                  |
-| `chore`    | Perubahan konfigurasi, tooling, atau dependensi      |
+| Tipe       | Digunakan untuk                                 |
+| ---------- | ----------------------------------------------- |
+| `feat`     | Fitur baru                                      |
+| `fix`      | Perbaikan bug                                   |
+| `docs`     | Perubahan dokumentasi                           |
+| `refactor` | Refaktor kode tanpa perubahan fungsionalitas    |
+| `style`    | Perubahan tampilan/CSS tanpa perubahan logika   |
+| `test`     | Menambah atau memperbaiki pengujian             |
+| `chore`    | Perubahan konfigurasi, tooling, atau dependensi |
 
 Contoh:
 
