@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     # only deploy when a release is published
-    if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Checkout Code
