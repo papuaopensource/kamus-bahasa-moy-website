@@ -36,7 +36,9 @@ jobs:
             echo "🚀 Deploying target: $TARGET"
             git fetch --all --tags
             git checkout $TARGET
-            git pull origin $TARGET || echo "Skipping pull if tag"
+            if [ "${{ github.event_name }}" != "release" ]; then
+              git pull origin $TARGET
+            fi
 
             # Restart services
             docker compose down
