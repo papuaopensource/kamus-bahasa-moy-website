@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.PUBLIC_API_URL ?? 'http://localhost:8000';
+const API_URL = import.meta.env.PUBLIC_API_URL ?? 'http://localhost:5000';
 
 export interface Meaning {
   id: number;

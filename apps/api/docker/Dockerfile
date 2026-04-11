@@ -46,6 +46,6 @@ ENV PATH="/root/.local/bin/:$PATH"
 COPY --from=builder /opt/venv /opt/venv
 COPY . /app/
 
-EXPOSE 8000
+EXPOSE 5000
 
-CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "5000"]

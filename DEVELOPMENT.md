@@ -65,8 +65,8 @@ kamusbahasamoy/
    ```
 
    - Frontend: `http://localhost:4321`
-   - Backend API: `http://localhost:8000`
-   - Dokumentasi API: `http://localhost:8000/docs`
+   - Backend API: `http://localhost:5000`
+   - Dokumentasi API: `http://localhost:5000/docs`
 
 ## Menjalankan Satu Aplikasi Saja
 
@@ -119,7 +119,7 @@ DB_NAME=kastau
 
 
 #! Frontend
-PUBLIC_API_URL=http://localhost:8000
+PUBLIC_API_URL=http://localhost:5000
 ```
 
 ## Build untuk Production

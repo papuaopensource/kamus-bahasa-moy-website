@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.scripts]
-dev = "uvicorn app.main:app --reload --port 8000"
+dev = "uvicorn app.main:app --reload --port 5000"
 
 [tool.ruff]
 line-length = 120

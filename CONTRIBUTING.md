@@ -49,8 +49,8 @@ Sebelum mulai, pastikan Anda telah menginstal:
    ```
 
    - Frontend: `http://localhost:4321`
-   - Backend API: `http://localhost:8000`
-   - Dokumentasi API: `http://localhost:8000/docs`
+   - Backend API: `http://localhost:5000`
+   - Dokumentasi API: `http://localhost:5000/docs`
 
 ## Struktur Monorepo
 
@@ -73,7 +73,7 @@ kamusbahasamoy/
 pnpm --filter @kamusbahasamoy/web dev
 
 # Hanya backend
-cd apps/api && uv run uvicorn app.main:app --reload --port 8000
+cd apps/api && uv run uvicorn app.main:app --reload --port 5000
 ```
 
 ### Menambah dependensi
