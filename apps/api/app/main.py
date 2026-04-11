@@ -1,23 +1,29 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Depends
+from dotenv import load_dotenv
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
-from app.routers import dictionary, songs
 from app.database import Base, engine, get_db
-
-from dotenv import load_dotenv
+from app.routers import dictionary, songs
 
 load_dotenv()
 
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    Base.metadata.create_all(bind=engine)
+    yield
+
+
 app = FastAPI(
     title="Kamus Bahasa Moy API",
-    description="API untuk kamus dan lirik lagu Bahasa Moy",
     version="0.1.0",
+    description="API untuk kamus dan lirik lagu Bahasa Moy",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
