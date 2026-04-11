@@ -1,6 +1,5 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
-
 from app.database import Base
 
 word_related = Table(
@@ -54,9 +53,7 @@ class Word(Base):
 
     word_class = relationship("WordClass", back_populates="words")
     language = relationship("Language", back_populates="words")
-    meanings = relationship(
-        "Meaning", back_populates="word", cascade="all, delete-orphan"
-    )
+    meanings = relationship("Meaning", back_populates="word", cascade="all, delete-orphan")
     related_words = relationship(
         "Word",
         secondary=word_related,

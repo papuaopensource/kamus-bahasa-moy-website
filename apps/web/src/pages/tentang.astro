@@ -1,7 +1,7 @@
 ---
-import MainLayout from '@/layouts/MainLayout.astro';
-import { Button } from '@/components/ui/button';
-import Link from '@/components/Link.astro';
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Button } from "@/components/ui/button";
+import Link from "@/components/Link.astro";
 import {
   BookOpen,
   Code,
@@ -13,40 +13,40 @@ import {
   Home,
   Mail,
   Smartphone,
-} from 'lucide-react';
+} from "lucide-react";
 import {
   Card,
   CardHeader,
   CardTitle,
   CardDescription,
   CardContent,
-} from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 ---
 
 <MainLayout
   title="Tentang"
   description="Informasi tentang situs Kamus Bahasa Moy dan Panduan kontribusi"
 >
-  <div className="mx-auto flex max-w-screen-xl flex-col px-4 py-6 md:px-8">
-    <div className="mb-6 flex items-center gap-2">
-      <Home className="text-muted-foreground h-4 w-4" />
+  <div class="flex flex-col max-w-screen-xl mx-auto px-4 py-6 md:px-8">
+    <div class="flex items-center gap-2 mb-6">
+      <Home className="h-4 w-4 text-muted-foreground" />
       <Link
         href="/"
         class="text-muted-foreground hover:text-foreground text-sm"
       >
         Beranda
       </Link>
-      <span className="text-muted-foreground mx-1">/</span>
-      <span className="text-sm font-medium">Tentang</span>
+      <span class="text-muted-foreground mx-1">/</span>
+      <span class="text-sm font-medium">Tentang</span>
     </div>
 
-    <div className="mx-auto grid max-w-3xl gap-8">
-      <div className="text-center">
-        <h1 className="mb-2 text-2xl font-bold tracking-tight">
+    <div class="grid gap-8 max-w-3xl mx-auto">
+      <div class="text-center">
+        <h1 class="text-2xl font-bold tracking-tight mb-2">
           Tentang Kamus Bahasa Moy
         </h1>
-        <p className="text-muted-foreground">
+        <p class="text-muted-foreground">
           Proyek open source untuk melestarikan dan mempromosikan bahasa Moy
           dari Jayapura, Papua
         </p>
@@ -55,7 +55,7 @@ import { Separator } from '@/components/ui/separator';
       <Card className="shadow-none">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
-            <BookOpen className="text-primary h-5 w-5" />
+            <BookOpen className="h-5 w-5 text-primary" />
             Tentang Aplikasi
           </CardTitle>
           <CardDescription
@@ -71,7 +71,7 @@ import { Separator } from '@/components/ui/separator';
             yang intuitif dan fitur-fitur yang berguna, aplikasi ini memudahkan
             pengguna untuk mempelajari dan mengapresiasi bahasa Moy.
           </p>
-          <p className="mt-2">
+          <p class="mt-2">
             Selain kamus, aplikasi ini juga menyediakan koleksi lirik lagu dalam
             bahasa Moy. Fitur ini memungkinkan pengguna untuk menikmati dan
             memahami kekayaan budaya Papua melalui musik dan lagu tradisional,
@@ -90,7 +90,7 @@ import { Separator } from '@/components/ui/separator';
       <Card className="shadow-none">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
-            <Code className="text-primary h-5 w-5" />
+            <Code className="h-5 w-5 text-primary" />
             Adaptasi untuk Bahasa Daerah Lain
           </CardTitle>
           <CardDescription
@@ -105,10 +105,10 @@ import { Separator } from '@/components/ui/separator';
             melalui teknologi dan dengan senang hati menyediakan codebase ini
             sebagai dasar pengembangan aplikasi serupa.
           </p>
-          <p className="font-medium">
+          <p class="font-medium">
             Dalam mengadaptasi kode sumber ini, Anda wajib:
           </p>
-          <ul className="list-disc space-y-2 pl-6">
+          <ul class="list-disc pl-6 space-y-2">
             <li>
               Tetap mencantumkan atribusi kepada Papua Open Source sebagai
               pengembang awal
@@ -118,7 +118,7 @@ import { Separator } from '@/components/ui/separator';
               tetap terbuka untuk umum
             </li>
           </ul>
-          <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+          <div class="flex flex-col sm:flex-row gap-4 mt-4">
             <Button className="flex items-center gap-2">
               <Link
                 href="https://github.com/papua-opensource/kamus-bahasa-moy"
@@ -128,7 +128,7 @@ import { Separator } from '@/components/ui/separator';
               >
                 <Github className="h-4 w-4" />
                 <span>Repository GitHub</span>
-                <ExternalLink className="ml-1 h-3 w-3" />
+                <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
             </Button>
           </div>
@@ -138,7 +138,7 @@ import { Separator } from '@/components/ui/separator';
       <Card id="kontribusi" className="shadow-none">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
-            <Github className="text-primary h-5 w-5" />
+            <Github className="h-5 w-5 text-primary" />
             Berkontribusi
           </CardTitle>
           <CardDescription
@@ -152,15 +152,15 @@ import { Separator } from '@/components/ui/separator';
             berkontribusi, baik Anda seorang pengembang, penerjemah, atau hanya
             pengguna yang ingin membantu.
           </p>
-          <p className="font-medium">Beberapa cara untuk berkontribusi:</p>
-          <ul className="list-disc space-y-2 pl-6">
+          <p class="font-medium">Beberapa cara untuk berkontribusi:</p>
+          <ul class="list-disc pl-6 space-y-2">
             <li>Menambahkan atau memperbaiki terjemahan lagu dan kosakata</li>
             <li>Melaporkan bug atau masalah yang Anda temukan</li>
             <li>Menyarankan fitur baru atau peningkatan</li>
             <li>Berkontribusi pada kode sumber dengan pull request</li>
             <li>Membantu mendokumentasikan proyek</li>
           </ul>
-          <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+          <div class="flex flex-col sm:flex-row gap-4 mt-4">
             <Button className="flex items-center gap-2" variant="default">
               <Link
                 href="https://github.com/papua-opensource/kamus-bahasa-moy-website/blob/main/CONTRIBUTING.md"
@@ -170,7 +170,7 @@ import { Separator } from '@/components/ui/separator';
               >
                 <Github className="h-4 w-4" />
                 <span>Panduan Kontribusi</span>
-                <ExternalLink className="ml-1 h-3 w-3" />
+                <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
             </Button>
           </div>
@@ -180,7 +180,7 @@ import { Separator } from '@/components/ui/separator';
       <Card className="shadow-none">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
-            <Smartphone className="text-primary h-5 w-5" />
+            <Smartphone className="h-5 w-5 text-primary" />
             Aplikasi Mobile
           </CardTitle>
           <CardDescription
@@ -194,7 +194,7 @@ import { Separator } from '@/components/ui/separator';
             termasuk pencarian offline, pengucapan, dan lirik lagu, langsung
             dari smartphone Anda.
           </p>
-          <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+          <div class="flex flex-col sm:flex-row gap-4 mt-4">
             <Button className="flex items-center gap-2">
               <Link
                 href="https://play.google.com/store/apps/details?id=org.papuaopensource.kamus_bahasa_moy"
@@ -205,7 +205,7 @@ import { Separator } from '@/components/ui/separator';
               >
                 <Download className="h-4 w-4" />
                 <span>Download di Play Store</span>
-                <ExternalLink className="ml-1 h-3 w-3" />
+                <ExternalLink className="h-3 w-3 ml-1" />
               </Link>
             </Button>
           </div>
@@ -215,7 +215,7 @@ import { Separator } from '@/components/ui/separator';
       <Card className="shadow-none">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2">
-            <Heart className="text-primary h-5 w-5" />
+            <Heart className="h-5 w-5 text-primary" />
             Tentang Papua Open Source
           </CardTitle>
           <CardDescription
@@ -236,28 +236,28 @@ import { Separator } from '@/components/ui/separator';
             format digital yang mudah diakses oleh generasi muda.
           </p>
           <Separator className="my-4" />
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <div className="flex items-center gap-3">
-              <Mail className="text-muted-foreground h-5 w-5" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="flex items-center gap-3">
+              <Mail className="h-5 w-5 text-muted-foreground" />
               <div>
-                <p className="text-sm font-medium">Email</p>
+                <p class="text-sm font-medium">Email</p>
                 <a
                   href="mailto:contact@papuaopensource.org"
-                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                  class="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   contact@papuaopensource.org
                 </a>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Globe className="text-muted-foreground h-5 w-5" />
+            <div class="flex items-center gap-3">
+              <Globe className="h-5 w-5 text-muted-foreground" />
               <div>
-                <p className="text-sm font-medium">Website</p>
+                <p class="text-sm font-medium">Website</p>
                 <a
                   href="https://www.papuaopensource.org"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary text-sm transition-colors"
+                  class="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
                   www.papuaopensource.org
                 </a>

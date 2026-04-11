@@ -6,6 +6,7 @@ Jalankan dari direktori apps/api:
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -16,8 +17,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from app.database import Base, SessionLocal, engine
-from app.models.dictionary import Language, Meaning, Word, WordClass, word_related
+from app.database import SessionLocal, engine, Base
+from app.models.dictionary import Language, WordClass, Word, Meaning, word_related
 from app.models.song import Song, Verse
 
 BASE_DIR = Path(__file__).parent.parent
@@ -107,10 +108,7 @@ def seed():
                     )
 
         db.commit()
-        print(
-            f"  → {len(words_data)} kata, "
-            f"{len(seen_pairs)} relasi kata terkait disimpan."
-        )
+        print(f"  → {len(words_data)} kata, {len(seen_pairs)} relasi kata terkait disimpan.")
 
         # --- Songs ---
         print(f"Membaca {SONGS_PATH}...")

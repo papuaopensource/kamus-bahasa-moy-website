@@ -1,6 +1,5 @@
-from sqlalchemy import JSON, Column, ForeignKey, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey, JSON
 from sqlalchemy.orm import relationship
-
 from app.database import Base
 
 
@@ -12,12 +11,7 @@ class Song(Base):
     composer = Column(String, nullable=True)
     description = Column(String, nullable=True)
 
-    verses = relationship(
-        "Verse",
-        back_populates="song",
-        cascade="all, delete-orphan",
-        order_by="Verse.order",
-    )
+    verses = relationship("Verse", back_populates="song", cascade="all, delete-orphan", order_by="Verse.order")
 
 
 class Verse(Base):
