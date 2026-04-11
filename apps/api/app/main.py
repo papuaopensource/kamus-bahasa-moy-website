@@ -28,6 +28,9 @@ app.add_middleware(
 app.include_router(dictionary.router)
 app.include_router(songs.router)
 
+@app.get("/")
+async def root():
+    return {"message": "Kamus Bahasa Moy API is running"}
 
 @app.get("/health")
 async def health(db: Session = Depends(get_db)):
