@@ -58,6 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [deploy]
     if: always()
+    environment: production
     steps:
       - name: Success Notification
         if: needs.deploy.result == 'success'
