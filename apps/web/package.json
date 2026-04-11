@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "echo 'No tests for web yet'"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.1",
