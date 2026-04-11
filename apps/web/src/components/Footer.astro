@@ -1,14 +1,14 @@
 ---
-import Link from "./Link.astro";
-import { Button } from "@/components/ui/button";
+import Link from './Link.astro';
+import { Button } from '@/components/ui/button';
 ---
 
-<footer class="sticky top-[100vh] bg-white border-t py-6 md:py-0 mt-auto">
+<footer class="sticky top-[100vh] mt-auto border-t bg-white py-6 md:py-0">
   <div
-    class="max-w-screen-xl mx-auto flex flex-col px-4 md:px-8 md:h-16 md:flex-row md:items-center md:justify-between text-sm text-muted-foreground"
+    class="text-muted-foreground mx-auto flex max-w-screen-xl flex-col px-4 text-sm md:h-16 md:flex-row md:items-center md:justify-between md:px-8"
   >
     <p>© 2025 Papua Open Source. All rights reserved.</p>
-    <div class="mt-4 md:mt-0 flex gap-4">
+    <div class="mt-4 flex gap-4 md:mt-0">
       <Button variant="link" size="sm">
         <Link
           href="/kebijakan-privasi/"

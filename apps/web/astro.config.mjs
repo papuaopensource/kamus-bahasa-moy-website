@@ -7,8 +7,8 @@ import { fileURLToPath } from 'url';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://kamusbahasamoy.web.id",
-  trailingSlash: "always",
+  site: 'https://kamusbahasamoy.web.id',
+  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()],
     resolve: {
