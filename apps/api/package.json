@@ -14,7 +14,7 @@
     "db:exec": "docker exec -it kamus-db psql -U postgres -d kamus",
     "docker:migration": "docker exec -it kamus-api uv run alembic upgrade head",
     "docker:migration:create": "docker exec -it kamus-api uv run alembic revision --autogenerate -m",
-    "docker:init": "pnpm docker:migration && pnpm docker:seed",
-    "docker:clean": "docker compose -f ../../docker-compose.yml down -v --rmi all"
+    "lint": "ruff check .",
+    "format": "ruff format ."
   }
 }

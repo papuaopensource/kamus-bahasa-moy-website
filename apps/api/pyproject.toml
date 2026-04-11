@@ -14,3 +14,23 @@ dependencies = [
 
 [project.scripts]
 dev = "uvicorn app.main:app --reload --port 8000"
+lint = "ruff check ."
+format = "ruff format ."
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "U"]
+ignore = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.10",
+]
