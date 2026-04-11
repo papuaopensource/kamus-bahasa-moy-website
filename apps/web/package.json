@@ -6,10 +6,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "lint": "eslint .",
-    "format": "prettier --write .",
-    "test": "echo 'No tests for web yet'"
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.1",
@@ -44,19 +41,6 @@
     "tw-animate-css": "^1.2.4"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@tailwindcss/typography": "^0.5.16",
-    "@typescript-eslint/eslint-plugin": "^8.58.1",
-    "@typescript-eslint/parser": "^8.58.1",
-    "eslint": "^9.39.4",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-astro": "^1.7.0",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
-    "globals": "^17.4.0",
-    "prettier": "^3.8.2",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "typescript-eslint": "^8.58.1"
+    "@tailwindcss/typography": "^0.5.16"
   }
 }
