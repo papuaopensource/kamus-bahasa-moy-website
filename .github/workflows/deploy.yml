@@ -10,7 +10,6 @@ jobs:
     name: Deploy to Production
     runs-on: ubuntu-latest
     environment: production
-    # only deploy when a release is published
 
     steps:
       - name: Checkout Code
@@ -24,28 +23,33 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd ${{ secrets.DEPLOY_PATH }}
-
             if [ "${{ github.event_name }}" = "release" ]; then
               TARGET="${{ github.event.release.tag_name }}"
             else
               TARGET="main"
             fi
 
-
             echo "🚀 Deploying target: $TARGET"
+
+            # Clone repo if first-time setup
+            if [ ! -d "${{ secrets.DEPLOY_PATH }}/.git" ]; then
+              echo "📦 First-time setup: cloning repository..."
+              git clone https://github.com/${{ github.repository }}.git ${{ secrets.DEPLOY_PATH }}
+            fi
+
+            cd ${{ secrets.DEPLOY_PATH }}
+
             git fetch --all --tags
             git checkout $TARGET
             if [ "${{ github.event_name }}" != "release" ]; then
               git pull origin $TARGET
             fi
 
-            # Restart services
             # Restart backend services only (web is deployed on Cloudflare)
             docker compose down api db --remove-orphans
             docker compose up -d --build api db
 
-            # Run initialization
+            # Run migrations & seed
             docker exec kamus-api uv run alembic upgrade head
             docker exec kamus-api uv run python scripts/seed.py
 
