@@ -224,10 +224,7 @@
       "lyrics": [
         {
           "type": "verse",
-          "content": [
-            "Ai Nja wei senggase",
-            "Kambung dakame"
-          ]
+          "content": ["Ai Nja wei senggase", "Kambung dakame"]
         },
         {
           "type": "chorus",
@@ -240,10 +237,7 @@
         },
         {
           "type": "verse",
-          "content": [
-            "Kemanine pegu Taop",
-            "Kalai tengga omsetru"
-          ]
+          "content": ["Kemanine pegu Taop", "Kalai tengga omsetru"]
         }
       ]
     },
@@ -363,10 +357,7 @@
         },
         {
           "type": "verse",
-          "content": [
-            "Kmong kama alei ngakbalei kameng",
-            "Nmbut tup de"
-          ]
+          "content": ["Kmong kama alei ngakbalei kameng", "Nmbut tup de"]
         }
       ]
     },
@@ -378,10 +369,7 @@
       "lyrics": [
         {
           "type": "verse",
-          "content": [
-            "Oh yerusalem wali wali ksop",
-            "Kandei dambu ngonesye"
-          ]
+          "content": ["Oh yerusalem wali wali ksop", "Kandei dambu ngonesye"]
         },
         {
           "type": "chorus",

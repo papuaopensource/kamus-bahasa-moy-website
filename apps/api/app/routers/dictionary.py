@@ -1,8 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
+
 from app.database import get_db
 from app.models.dictionary import Word
-from app.schemas.dictionary import WordSummary, WordDetail
+from app.schemas.dictionary import WordDetail, WordSummary
 
 router = APIRouter(prefix="/dictionary", tags=["dictionary"])
 
