@@ -1,24 +1,51 @@
-FROM python:3.13-slim-bookworm
+# Stage 1: Builder
+FROM python:3.13-slim AS builder
 
-# Install uv secara langsung dari binary
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    UV_PROJECT_ENVIRONMENT=/opt/venv
 
-# Set working directory
 WORKDIR /app
 
-# Salin file dependensi
-COPY pyproject.toml .
-# Salin folder app agar uv sync bisa mendeteksi source
-COPY app ./app
+# Install build deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install dependensi menggunakan uv
-RUN uv sync --no-cache
+# Install uv
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+ENV PATH="/root/.local/bin/:$PATH"
 
-# Salin sisa kode aplikasi
-COPY . .
+# Install project deps
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev --no-install-project
 
-# Expose port FastAPI
+# Stage 2: Runner
+FROM python:3.13-slim AS runner
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/opt/venv/bin:$PATH" \
+    TZ=Asia/Jayapura \
+    UV_PROJECT_ENVIRONMENT=/opt/venv \
+    UV_LINK_MODE=copy
+
+WORKDIR /app
+
+# Install runtime deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libpq5 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv in runner stage
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+ENV PATH="/root/.local/bin/:$PATH"
+
+COPY --from=builder /opt/venv /opt/venv
+COPY . /app/
+
 EXPOSE 8000
 
-# Jalankan uvicorn
 CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
