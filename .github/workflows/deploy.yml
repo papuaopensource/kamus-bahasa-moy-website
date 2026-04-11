@@ -41,8 +41,9 @@ jobs:
             fi
 
             # Restart services
-            docker compose down
-            docker compose up -d --build
+            # Restart backend services only (web is deployed on Cloudflare)
+            docker compose down api db --remove-orphans
+            docker compose up -d --build api db
 
             # Run initialization
             docker exec kamus-api uv run alembic upgrade head
