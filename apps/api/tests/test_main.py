@@ -5,9 +5,9 @@ from app.main import app
 client = TestClient(app)
 
 
-def test_read_root():
+def test_root_endpoint():
     """
-    Test the root endpoint (/)
+    Test root endpoint
     """
     response = client.get("/")
     assert response.status_code == 200
@@ -16,7 +16,7 @@ def test_read_root():
 
 def test_health_check():
     """
-    Test the health check endpoint (/health)
+    Test healthcheck endpoint
     """
     response = client.get("/health")
     assert response.status_code == 200
