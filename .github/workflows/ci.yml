@@ -2,11 +2,9 @@ name: Kamus Bahasa Moy - CI
 
 on:
   push:
-    branches: ["main", "feat/docker-ci"]
+    branches: ["main"]
   pull_request:
     branches: ["main"]
-  release:
-    types: [published]
   workflow_dispatch:
 
 permissions:
