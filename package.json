@@ -11,7 +11,9 @@
     "docker:migration": "pnpm --filter @kamus-bahasa-moy/api docker:migration",
     "docker:seed": "pnpm --filter @kamus-bahasa-moy/api docker:seed",
     "db:exec": "pnpm --filter @kamus-bahasa-moy/api db:exec",
-    "docker:rm": "pnpm --filter @kamus-bahasa-moy/api docker:rm"
+    "docker:rm": "pnpm --filter @kamus-bahasa-moy/api docker:rm",
+    "docker:init": "pnpm --filter @kamus-bahasa-moy/api docker:init",
+    "docker:clean": "pnpm --filter @kamus-bahasa-moy/api docker:clean"
   },
   "devDependencies": {
     "turbo": "^2.5.3"
