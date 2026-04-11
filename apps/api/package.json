@@ -14,7 +14,8 @@
     "db:exec": "docker exec -it kamus-db psql -U postgres -d kamus",
     "docker:migration": "docker exec -it kamus-api uv run alembic upgrade head",
     "docker:migration:create": "docker exec -it kamus-api uv run alembic revision --autogenerate -m",
-    "lint": "ruff check .",
-    "format": "ruff format ."
+    "lint": "uv run ruff check .",
+    "format": "uv run ruff format .",
+    "test": "PYTHONPATH=. uv run pytest"
   }
 }
