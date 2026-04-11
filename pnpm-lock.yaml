@@ -12,6 +12,8 @@ importers:
         specifier: ^2.5.3
         version: 2.9.6
 
+  apps/api: {}
+
   apps/web:
     dependencies:
       '@astrojs/mdx':

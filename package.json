@@ -5,7 +5,13 @@
     "dev": "turbo dev",
     "build": "turbo build",
     "preview": "turbo preview",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "docker:up": "docker compose up -d --build",
+    "docker:down": "docker compose down",
+    "docker:migration": "pnpm --filter @kamus-bahasa-moy/api docker:migration",
+    "docker:seed": "pnpm --filter @kamus-bahasa-moy/api docker:seed",
+    "db:exec": "pnpm --filter @kamus-bahasa-moy/api db:exec",
+    "docker:rm": "pnpm --filter @kamus-bahasa-moy/api docker:rm"
   },
   "devDependencies": {
     "turbo": "^2.5.3"
