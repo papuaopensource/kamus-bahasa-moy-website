@@ -24,7 +24,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            cd /var/www/kamusbahasamoy
+            cd ${{ secrets.DEPLOY_PATH }}
 
             if [ "${{ github.event_name }}" = "release" ]; then
               TARGET="${{ github.event.release.tag_name }}"
