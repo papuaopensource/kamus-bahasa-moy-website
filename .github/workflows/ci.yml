@@ -5,6 +5,8 @@ on:
     branches: ["main", "feat/docker-ci"]
   pull_request:
     branches: ["main"]
+  release:
+    types: [published]
   workflow_dispatch:
 
 permissions:
@@ -14,7 +16,6 @@ jobs:
   lint-and-test:
     name: Check, Lint & Test
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
