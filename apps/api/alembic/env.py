@@ -1,8 +1,10 @@
-from logging.config import fileConfig
 import os
-from sqlalchemy import engine_from_config, pool
-from alembic import context
+from logging.config import fileConfig
+
 from dotenv import load_dotenv
+from sqlalchemy import engine_from_config, pool
+
+from alembic import context
 
 load_dotenv()
 
@@ -11,8 +13,8 @@ config = context.config
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-from app.database import Base
 import app.models  # noqa: F401 — ensure all models are registered
+from app.database import Base
 
 target_metadata = Base.metadata
 
