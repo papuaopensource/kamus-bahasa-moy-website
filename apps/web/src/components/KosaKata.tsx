@@ -99,11 +99,13 @@ export default function KosaKataPage() {
   const [loadingDetail, setLoadingDetail] = useState(false);
 
   useEffect(() => {
-    fetchAllWords()
+    setLoading(true);
+    setError(null);
+    fetchAllWords(selectedLetter || undefined)
       .then(setWords)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [selectedLetter]);
 
   const categories = useMemo(() => {
     const seen = new Map<string, { id: string; name: string }>();
@@ -133,18 +135,14 @@ export default function KosaKataPage() {
           selectedCategory === 'all' ||
           word.word_class?.name === selectedCategory;
 
-        const matchesLetter =
-          selectedLetter === '' ||
-          word.text.toUpperCase().startsWith(selectedLetter);
-
-        return matchesSearch && matchesCategory && matchesLetter;
+        return matchesSearch && matchesCategory;
       })
       .sort((a, b) =>
         sortOrder === 'asc'
           ? a.text.localeCompare(b.text)
           : b.text.localeCompare(a.text)
       );
-  }, [words, searchQuery, selectedCategory, selectedLetter, sortOrder]);
+  }, [words, searchQuery, selectedCategory, sortOrder]);
 
   const speakText = (text: string) => {
     if ('speechSynthesis' in window) {

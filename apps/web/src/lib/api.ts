@@ -50,8 +50,10 @@ export interface SongDetail extends SongSummary {
   verses: Verse[];
 }
 
-export async function fetchAllWords(): Promise<WordSummary[]> {
-  const res = await fetch(`${API_URL}/dictionary?limit=2000`);
+export async function fetchAllWords(letter?: string): Promise<WordSummary[]> {
+  const params = new URLSearchParams({ limit: '2000' });
+  if (letter) params.set('letter', letter);
+  const res = await fetch(`${API_URL}/dictionary?${params}`);
   if (!res.ok) throw new Error('Gagal mengambil data kamus');
   return res.json();
 }

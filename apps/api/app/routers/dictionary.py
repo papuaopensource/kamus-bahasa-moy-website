@@ -12,6 +12,7 @@ router = APIRouter(prefix="/dictionary", tags=["dictionary"])
 def list_words(
     q: str | None = Query(None, description="Cari kata"),
     word_class_id: int | None = Query(None),
+    letter: str | None = Query(None, description="Filter berdasarkan huruf pertama", min_length=1, max_length=1),
     skip: int = Query(0, ge=0),
     limit: int = Query(20, ge=1, le=2000),
     db: Session = Depends(get_db),
@@ -21,6 +22,8 @@ def list_words(
         query = query.filter(Word.text.ilike(f"%{q}%"))
     if word_class_id:
         query = query.filter(Word.word_class_id == word_class_id)
+    if letter:
+        query = query.filter(Word.text.ilike(f"{letter}%"))
     return query.order_by(Word.text).offset(skip).limit(limit).all()
 
 
